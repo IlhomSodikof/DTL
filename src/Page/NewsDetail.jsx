@@ -4,6 +4,8 @@ import { endpoints } from '../config/endpoints';
 import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaTelegram } from 'react-icons/fa';
+import dateFormat from "dateformat";
+
 
 
 export default function NewsDetail() {
@@ -110,7 +112,9 @@ export default function NewsDetail() {
             transition={{ duration: 1 }}
             className="text-sm sm:text-base md:text-lg text-gray-600 mb-6"
           >
-            <span className="font-semibold text-gray-800">Chop etilgan:</span> {apiData?.created_at}
+            <span className="font-semibold text-gray-800">Chop etilgan: </span>
+            {dateFormat(apiData?.created_at, "dd.mm.yyyy")}
+
           </motion.p>
           <div className="text-lg sm:text-xl md:text-2xl text-gray-700 leading-relaxed mb-8">
             <p>{apiData?.text}</p>

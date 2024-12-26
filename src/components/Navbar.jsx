@@ -31,7 +31,7 @@ export default function Navbar() {
               onClick={toggleDropdown}
               className="font-medium   focus:outline-none"
             >
-              Loyha haqida
+              Biz haqimizda
             </button>
             {isOpen && (
               <div className="absolute right-0 mt-2 w-48 bg-white text-black shadow-md rounded">

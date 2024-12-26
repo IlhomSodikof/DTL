@@ -1,18 +1,228 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { IoSearchOutline } from "react-icons/io5";
-import { HiMiniXMark } from "react-icons/hi2";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom"
+
+// import React, { useState } from 'react';
+// import { Link } from 'react-router-dom';
+
+const SearchResultCard = ({ result }) => {
+  const [hoverData, setHoverData] = useState(null);
+  const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+
+  const highlightWords = (content, matches) => {
+    if (!matches || matches.length === 0) return content;
+    const sortedMatches = [...matches].sort((a, b) => a.start_idx - b.start_idx);
+    const mergedMatches = [];
+    let currentMatch = { ...sortedMatches[0] };
+    for (let i = 1; i < sortedMatches.length; i++) {
+      const match = sortedMatches[i];
+      if (currentMatch.end_idx >= match.start_idx) {
+        currentMatch.end_idx = Math.max(currentMatch.end_idx, match.end_idx);
+        currentMatch.word += `, ${match.word}`;
+      } else {
+        mergedMatches.push(currentMatch);
+        currentMatch = { ...match };
+      }
+    }
+    mergedMatches.push(currentMatch);
+    const parts = [];
+    let lastIndex = 0;
+    mergedMatches.forEach((match, index) => {
+      const { start_idx, end_idx, word, root, suffixes } = match;
+      if (start_idx > lastIndex) {
+        parts.push(content.slice(lastIndex, start_idx));
+      }
+      parts.push(
+        <span
+          key={index}
+          className="bg-yellow-200 text-black font-bold hover:bg-yellow-400 cursor-pointer"
+          onMouseEnter={(e) => {
+            const rect = e.target.getBoundingClientRect();
+            setHoverPosition({ x: e.clientX, y: e.clientY });
+            setHoverData({ word, root, suffixes });
+            setIsHovered(true);
+          }}
+          onMouseLeave={() => {
+            setHoverData(null);
+            setIsHovered(false);
+          }}
+        >
+          {content.slice(start_idx, end_idx)}
+        </span>
+      );
+      lastIndex = end_idx;
+    });
+    if (lastIndex < content.length) {
+      parts.push(content.slice(lastIndex));
+    }
+    return parts;
+  };
+
+  return (
+    <div className='relative flex flex-col gap-[10px] mx-10 p-10 shadow-[#cccccc] shadow-xl bg-white rounded-md' style={{ marginTop: '50px' }}>
+      <p className='text-left text-[18px] text-gray-500 text-medium'> {highlightWords(result.content, result.matches)}
+        <Link to="/" className="text-blue-500 hover:cursor-pointer hover:underline pl-2">ko'proq...</Link>
+      </p>
+      {hoverData && isHovered && (
+        <div
+          className="fixed p-4 bg-white border rounded-lg shadow-lg z-10"
+          style={{
+            top: hoverPosition.y + 10,
+            left: hoverPosition.x + 10,
+            maxWidth: "250px",
+            borderRadius: "8px",
+            padding: "10px",
+            boxShadow: "0px 4px 6px rgba(0,0,0,0.1)",
+          }}
+        >
+          <h4 className="text-lg font-semibold">Word: {hoverData.word}</h4>
+          <p className="text-sm text-gray-600">Root: {hoverData.root}</p>
+          <ul className="text-sm text-gray-600">
+            {hoverData.suffixes?.map((suffix, index) => (
+              <li key={index}>
+                <strong>{suffix.suffix}:</strong> {suffix.suffix_description}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
+};
+
+
+
+
+
+
+function LemmaCard({ result }) {
+  const [highlightedWord, setHighlightedWord] = useState(null);
+  const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0 });
+
+  const handleWordHover = (word, event) => {
+    setHighlightedWord(word); // So'zni belgilash
+    setHoverPosition({ x: event.clientX, y: event.clientY }); // Sichqoncha pozitsiyasini olish
+  };
+  const handleWordLeave = () => {
+    setHighlightedWord(null);
+  };
+  return (
+    <div>
+      <div className='flex flex-col gap-[10px] mx-10  p-10  shadow-[#cccccc] shadow-xl bg-white rounded-md' style={{ marginTop: '50px' }}>
+        {/* <h3 className='text-left text-[24px] font-bold'>"ipsLorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium?.um"</h3> */}
+        <p className='text-left text-[18px] text-gray-500 text-medium'>
+          {result.content.split(" ").map((word, idx) => (
+            <span
+              key={idx} // Har bir so'z uchun unikal kalit
+              className={
+                result.matches.some((match) => match.word === word) // Agar so'z match ichida bo'lsa, ajratish
+                  ? "bg-yellow-300 cursor-pointer font-bold text-black" // Ajratilgan rang va hover ko'rinish
+                  : ""
+              }
+              onMouseEnter={(e) =>
+                result.matches.some((match) => match.word === word) &&
+                handleWordHover(word, e) // Hover bosilganda so'zni belgilash
+              }
+              onMouseLeave={handleWordLeave} // Hoverdan chiqishda tozalash
+            >
+              {word}{" "} {/* Har bir so'zni joyiga qo'yish */}
+            </span>
+          ))}
+
+          <Link to="/" className="text-blue-500 hover:cursor-pointer hover:underline pl-2">ko'proq...</Link>
+        </p>
+      </div>
+
+      {highlightedWord && (
+        <div
+          className="absolute bg-gray-900 text-white p-2 rounded-lg"
+          style={{ top: hoverPosition.y + 10, left: hoverPosition.x + 10 }} // Sichqoncha pozitsiyasida ko'rsatish
+        >
+          {highlightedWord} {/* So'zni chiqarish */}
+        </div>
+      )}
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default function Dictonary() {
+  const [data, setData] = useState([]);
+  const [searchWord, setSearchWord] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [tape, setTape] = useState("token");
+
+  const fetchData = async () => {
+    if (!searchWord) return;
+    setLoading(true);
+    switch (tape) {
+      case "token":
+        try {
+          const response = await fetch(
+            `https://dictionary.uzfati.uz/api/text/search/?prefix=${searchWord}&search_type=token`
+          );
+          const result = await response.json();
+          setData(result.results.search_results || []);
+          console.log("bu searchmish", result);
+
+        } catch (error) {
+          console.error("API data fetching error:", error);
+        } finally {
+          setLoading(false);
+        }
+        console.log("bu tokendaddddddddddd");
+
+        break;
+
+      case "lemma":
+        try {
+          const response = await fetch(
+            `https://dictionary.uzfati.uz/api/text/search/?prefix=${searchWord}&search_type=lemma`
+          );
+          const result = await response.json();
+          setData(result.results.search_results || []);
+          console.log("bu searchmish", result);
+
+        } catch (error) {
+          console.error("API data fetching error:", error);
+        } finally {
+          setLoading(false);
+        }
+        console.log("bu lemmmmaammamamamammamaada ");
+
+        break;
+    }
+
+
+  };
+
+  const clearData = () => {
+    setData([]);
+    setSearchWord("");
+  };
+
   const [active, setActive] = useState(0)
   return (
     <>
       <div className="lg:px-24 flex flex-col lg:flex-row h-[80vh]  my-20">
         <ul className='flex flex-row pl-10 mb-5 lg:mb-0   lg:flex-col lg:w-56 xl:w-72  items-center h-full pt-10 border-r'>
-          <li className='text-xl lg:text-3xl border-l-4 lg:border-l-0  font-medium cursor-pointer lg:w-[90%] py-0 lg:py-5 p-5 lg:border-b lg:text-center' onClick={() => setActive(1)} style={{ borderColor: active == 1 ? "crimson" : "", color: active == 1 ? "crimson" : "" }}>Token</li>
-          <li className='text-xl lg:text-3xl border-l-4 lg:border-l-0  font-medium cursor-pointer lg:w-[90%] py-0 lg:py-5 p-5 lg:border-b lg:text-center' onClick={() => setActive(2)} style={{ borderColor: active == 2 ? "crimson" : "", color: active == 2 ? "crimson" : "" }}>Lema</li>
+          <li className='text-xl lg:text-3xl border-l-4 lg:border-l-0  font-medium cursor-pointer lg:w-[90%] py-0 lg:py-5 p-5 lg:border-b lg:text-center' onClick={() => { setTape("token"), clearData() }} style={{ borderColor: tape == "token" ? "crimson" : "", color: tape == "token" ? "crimson" : "" }}>Token</li>
+          <li className='text-xl lg:text-3xl border-l-4 lg:border-l-0  font-medium cursor-pointer lg:w-[90%] py-0 lg:py-5 p-5 lg:border-b lg:text-center' onClick={() => { setTape("lemma"), clearData() }} style={{ borderColor: tape == "lemma" ? "crimson" : "", color: tape == "lemma" ? "crimson" : "" }}>Lema</li>
           <li className='text-xl lg:text-3xl  lg:border-l-0  font-medium cursor-pointer lg:w-[90%] py-0 lg:py-5 p-5  flex justify-end'>
-            <button
+            <button onClick={clearData}
               className="group relative flex p-5 py-3 flex-col items-center justify-center overflow-hidden rounded-xl border-2 bg-[crimson]  hover:bg-red-600"
             >
               <svg
@@ -67,32 +277,62 @@ export default function Dictonary() {
         <div className="flex flex-1 flex-col gap-4  h-full ">
           <div className='w-full  flex justify-center m-3 my-5'>
             <div className='rounded-2xl border-2 border-[#dc143c50] bg-transparent flex w-[max-content] p-1'>
-              <input className=' p-1 pl-3 outline-none  w-80 bg-transparent' type="search" />
-              <button className=' p-2 px-5  py-3   bg-[crimson] rounded-xl text-white flex gap-1 items-center'><IoSearchOutline className='text-xl' />  </button>
+              <input className=' p-1 pl-3 outline-none  w-80 bg-transparent' type="search"
+                value={searchWord}
+                onChange={(e) => setSearchWord(e.target.value)}
+              />
+              <button className=' p-2 px-5  py-3   bg-[crimson] rounded-xl text-white flex gap-1 items-center' onClick={fetchData}><IoSearchOutline className='text-xl' />  </button>
               {/* <button className=' p-2 pr-3 bg-[crimson] border-l-2 rounded-r-xl text-white flex gap-1 items-center'> <HiMiniXMark /> </button> */}
             </div>
           </div>
-
-          <div className="flex flex-col h-[7  0vh] overflow-auto pb-7">
-            <div className='flex flex-col gap-[10px] mx-10  p-10  shadow-[#cccccc] shadow-xl bg-white rounded-md' style={{ marginTop: '50px' }}>
-              <h3 className='text-left text-[24px] font-bold'>"ipsLorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium?.um"</h3>
-              <p className='text-left text-[18px] text-gray-500 text-medium'> "Lorem ipsum dolor amet consectetur adipisicing elit. Praesentium? dolor sit amet consectetur adipisicing elit. Praesentium?  consectetur adipisicing elit. Praesentium? sit amet consectetur adipisicing elit. Praesentium? dolor sit amet consectetur adipisicing elit. Praesentium?  consectetur adipisicing elit. Praesentium?" : "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium?"
-                <Link to="/" className="text-blue-500 hover:cursor-pointer hover:underline pl-2">ko'proq...</Link>
-              </p>
-            </div>
-            <div className='flex flex-col gap-[10px] mx-10  p-10  shadow-[#cccccc] shadow-xl bg-white rounded-md' style={{ marginTop: '50px' }}>
-              <h3 className='text-left text-[24px] font-bold'>"ipsLorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium?.um"</h3>
-              <p className='text-left text-[18px] text-gray-500 text-medium'> "Lorem ipsum dolor amet consectetur adipisicing elit. Praesentium? dolor sit amet consectetur adipisicing elit. Praesentium?  consectetur adipisicing elit. Praesentium? sit amet consectetur adipisicing elit. Praesentium? dolor sit amet consectetur adipisicing elit. Praesentium?  consectetur adipisicing elit. Praesentium?" : "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium?"
-                <Link to="/" className="text-blue-500 hover:cursor-pointer hover:underline pl-2">ko'proq...</Link>
-
-              </p>
-            </div>
+          {tape == "token" && <div className="flex flex-col h-[70vh] overflow-auto pb-7">
+            {loading ? (
+              <p className='flex h-full w-full items-center justify-center text-2xl'>Yuklanmoqda...</p>
+            ) : data.length > 0 ? (
+              data.map((result, index) => (
+                <SearchResultCard key={index} result={result} />
+              ))
+            ) : (
+              searchWord ? <p className='flex h-full w-full items-center justify-center text-2xl'>Natija topilmadi</p> : <p className='flex h-full w-full items-center justify-center text-2xl'>Saxifaga hush kelibsan</p>
+            )}
           </div>
+          }
+
+          {tape == "lemma" && <div className="flex flex-col h-[70vh] overflow-auto pb-7">
+            {loading ? (
+              <p className='flex h-full w-full items-center justify-center text-2xl'>Yuklanmoqda...</p>
+            ) : data.length > 0 ? (
+              data.map((result, index) => (
+                <LemmaCard key={index} result={result} />
+              ))
+            ) : (
+
+              searchWord ? <p className='flex h-full w-full items-center justify-center text-2xl'>Natija topilmadi</p> : <p className='flex h-full w-full items-center justify-center text-2xl'>Saxifaga hush kelibsan</p>
+            )}
+          </div>
+          }
+
+
+          {/* <div className="flex flex-col h-[7  0vh] overflow-auto pb-7">
+            <div className='flex flex-col gap-[10px] mx-10  p-10  shadow-[#cccccc] shadow-xl bg-white rounded-md' style={{ marginTop: '50px' }}>
+              <h3 className='text-left text-[24px] font-bold'>"ipsLorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium?.um"</h3>
+              <p className='text-left text-[18px] text-gray-500 text-medium'> "Lorem ipsum dolor amet consectetur adipisicing elit. Praesentium? dolor sit amet consectetur adipisicing elit. Praesentium?  consectetur adipisicing elit. Praesentium? sit amet consectetur adipisicing elit. Praesentium? dolor sit amet consectetur adipisicing elit. Praesentium?  consectetur adipisicing elit. Praesentium?" : "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium?"
+                <Link to="/" className="text-blue-500 hover:cursor-pointer hover:underline pl-2">ko'proq...</Link>
+              </p>
+            </div>
+          </div> */}
         </div>
       </div >
-
-
-
     </>
   )
 }
+
+
+// import React from 'react'
+// import Search from './Search'
+
+// export default function Dictonary() {
+//   return (
+//     <div><Search /></div>
+//   )
+// }

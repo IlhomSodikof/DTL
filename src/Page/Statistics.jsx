@@ -30,14 +30,14 @@ export default function StatisticPage() {
 
   }, []);
   const maxCount = Math.max(...apiData?.map((item) => item.word_count));
-  const [num, setNum] = useState(3)
+  const [num, setNum] = useState(2)
   return (
     <div className='my-20'> <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4 sm:mb-6 md:mb-8 text-center">
       So'zlar soni bo'yicha statistika
     </h2>
       <main className="flex justify-end lg:px-28 px-10 mb-5 gap-5">
-        <div className="text-2xl border rounded-lg bg-[crimson] text-white p-3" onClick={() => setNum(1)}><PiChartDonutFill /></div>
         <div className="text-2xl border rounded-lg bg-[crimson] text-white p-3" onClick={() => setNum(2)}><PiChartBarFill /></div>
+        <div className="text-2xl border rounded-lg bg-[crimson] text-white p-3" onClick={() => setNum(1)}><PiChartDonutFill /></div>
         <div className="text-2xl border rounded-lg bg-[crimson] text-white p-3" onClick={() => setNum(3)}><BiSolidGridAlt /></div>
       </main>
       <div className="w-full min-h-[60vh] flex flex-col items-center ">

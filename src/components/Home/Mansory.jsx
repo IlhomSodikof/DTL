@@ -35,7 +35,7 @@ export default function Mansory() {
               apiData?.top_search_histories?.map((e) => {
                 return (
                   <div className='flex flex-col gap-[10px]  p-10  shadow-[#cccccc] shadow-xl bg-white rounded-md' style={{ marginTop: '50px' }}>
-                    <h3 className='text-left text-[24px] font-bold'>{e?.word} ({e?.count})</h3>
+                    <h3 className='text-left text-[20px] md:text-[24px] font-bold flex flex-col gap-0 md:flex-row md:gap-3'> <span className='capitalize'>{e?.word}</span> <span className='text-[#1302056a] '>qidiruvlar soni ({e?.count})</span></h3>
                     <p className='text-left text-[18px] text-gray-500 text-medium'>{e?.text} <Link to="/" className="text-blue-500 hover:cursor-pointer hover:underline pl-2">ko'proq...</Link></p>
                   </div>)
               })

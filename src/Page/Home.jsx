@@ -31,8 +31,8 @@ export default function Home() {
         </div>
       </div>
       <NewsHm />
-      <div className='lg:mx-10 lg:px-10  mb-9 flex flex-col gap-6 lg:my-20' >
-        <h2 className='text-5xl font-bold pl-2'>Eng ko'p qidirilgan so'zlar</h2>
+      <div className='lg:mx-10 lg:px-10  md:mb-9 flex flex-col my-10 md:gap-6 lg:my-20' >
+        <h2 className='text-3xl  md:text-5xl text-center lg:text-start font-bold pl-2'>Eng ko'p qidirilgan so'zlar</h2>
         <Mansory /></div>
 
       {/* <Hero /> */}
