@@ -3,7 +3,9 @@ import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 import { DataService } from '../config/Dataservice';
 import { endpoints } from '../config/endpoints';
 import dateFormat from "dateformat";
+import { useNavigate } from 'react-router-dom';
 export default function News() {
+  const navigate = useNavigate()
   const [apiData, setApiData] = useState([]);
   const fetchData = async () => {
     try {
@@ -63,7 +65,7 @@ export default function News() {
           </svg>
         </section>
       </main>
-      <div className='lg:px-24 mt-28' id="news">
+      <div className='lg:px-24 mt-28 mb-10' id="news">
         {apiData?.results?.length > 0 ? ( // Ma'lumot mavjudligini tekshirish
           <ResponsiveMasonry
             columnsCountBreakPoints={{ 350: 1, 640: 1, 750: 2, 900: 2, 1024: 3, 1439: 4 }}
@@ -91,7 +93,7 @@ export default function News() {
                           </span>
                         </div>
                         <div className="news_button">
-                          <button className="button">
+                          <button className="button" onClick={() => navigate(`/news/${e?.id}`)}>
                             batafsil
                           </button>
                         </div>
@@ -112,3 +114,5 @@ export default function News() {
     </>
   )
 }
+/////////////////////////////////////////////////////////////////////////////////////
+

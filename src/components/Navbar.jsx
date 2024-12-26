@@ -54,7 +54,7 @@ export default function Navbar() {
               </div>
             )}
           </div>
-          <Link className='font-medium' to="/">Statistic tahlil</Link>
+          <Link className='font-medium' to="/statistic">Statistic tahlil</Link>
           <Link className='font-medium' to="/dictonary">Lug'at</Link>
           <Link className='font-medium' to="/news">Yangiliklar</Link>
 
@@ -99,6 +99,9 @@ export default function Navbar() {
               </li>
               <li className="border-b border-gray-400 my-8 uppercase">
                 <Link to="/projects" onClick={() => setIsNavOpen(false)}>Nashirlar</Link>
+              </li>
+              <li className="border-b border-gray-400 my-8 uppercase">
+                <Link to='/websites' onClick={() => setIsNavOpen(false)}>Foydali websaytlar</Link>
               </li>
               <li className="border-b border-gray-400 my-8 uppercase">
                 <Link to="/statistic" onClick={() => setIsNavOpen(false)}>Statistic tahlil</Link>

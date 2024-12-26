@@ -9,7 +9,7 @@ export const endpoints = {
 
   topSozlar: "/top-search/",
   project: "/publications/",
-  // scTeam: "/scientific-team/",
+  contact: "/contact/create/",
   // scTeamById: (id) => `/scientific-team/${id}/`,
 
   // texts: "/text/",

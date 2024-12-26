@@ -10,6 +10,8 @@ import News from './Page/News'
 import Dictonary from './Page/Dictonary'
 import Projects from './Page/Projects'
 import Hero from './components/Home/Hero'
+import Statistics from './Page/Statistics'
+import NewsDetail from './Page/NewsDetail'
 
 
 export default function App() {
@@ -43,8 +45,16 @@ export default function App() {
           element: <News />,
         },
         {
+          path: "/news/:id",
+          element: <NewsDetail />,
+        },
+        {
           path: "/websites",
           element: <Hero />,
+        },
+        {
+          path: "/statistic",
+          element: <Statistics />,
         },
         {
           path: "*",

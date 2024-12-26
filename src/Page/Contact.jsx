@@ -1,11 +1,38 @@
-import React from 'react'
-
+import React, { useState } from "react";
+import { DataService } from "../config/Dataservice";
+import { endpoints } from "../config/endpoints";
 export default function Contact() {
+  const [errors, setErrors] = useState({});
+  const [formData, setFormData] = useState({ full_name: "", phone: "", message: "" });
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await DataService.post(endpoints.contact, formData);
+      if (response) {
+        setFormData({ full_name: "", phone: "", message: "" }); // Clear the form
+        setErrors({}); // Clear previous errors
+        alert("Xabar muvaffaqiyatli yuborildi!");
+      }
+    } catch (error) {
+      if (error.response && error.response.data) {
+        setErrors(error.response.data); // Set errors from the API response
+      } else {
+        console.error("Xabar yuborishda xatolik yuz berdi:", error);
+      }
+    }
+  };
+
   return (
     <section className="py-10 sm:py-16 lg:py-24 mt-[100px]">
       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div className="max-w-2xl mx-auto text-center">
-          <h2 className="text-3xl font-bold leading-tight text-base-content sm:text-4xl lg:text-5xl">Biz bilan bog'laning</h2>
+          <h2 className="text-3xl font-bold leading-tight text-base-content sm:text-4xl lg:text-5xl">
+            Biz bilan bog'laning
+          </h2>
         </div>
 
         <div className="max-w-5xl mx-auto mt-12 sm:mt-16">
@@ -44,22 +71,20 @@ export default function Contact() {
             <div className="px-6 py-12 sm:p-12">
               <h3 className="text-3xl font-semibold text-center">Bizga xabar yuboring</h3>
 
-              <form
-                // onSubmit={handleSubmit}
-                className="mt-14">
+              <form onSubmit={handleSubmit} className="mt-14">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-5 gap-y-4">
                   <div>
                     <label className="text-base font-medium">Ismingiz</label>
                     <div className="mt-2.5 relative">
                       <input
                         type="text"
-                        name="name"
-                        // value={formData.name}
-                        // onChange={handleInputChange}
-                        placeholder="To'liq simingiani kiriting"
+                        name="full_name"
+                        value={formData.full_name}
+                        onChange={handleInputChange}
+                        placeholder="To'liq ismingizni kiriting"
                         className="block w-full px-4 py-4 placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
                       />
-                      {/* {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>} */}
+                      {errors.full_name && <p className="text-red-500 text-sm">{errors.full_name}</p>}
                     </div>
                   </div>
 
@@ -69,12 +94,12 @@ export default function Contact() {
                       <input
                         type="tel"
                         name="phone"
-                        // value={formData.phone}
-                        // onChange={handleInputChange}
+                        value={formData.phone}
+                        onChange={handleInputChange}
                         placeholder="Telefon raqamingizni kiriting"
                         className="block w-full px-4 py-4 placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md focus:outline-none focus:border-blue-600 caret-blue-600"
                       />
-                      {/* {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>} */}
+                      {errors.phone && <p className="text-red-500 text-sm">{errors.phone}</p>}
                     </div>
                   </div>
 
@@ -82,16 +107,17 @@ export default function Contact() {
                     <label className="text-base font-medium">Xabar</label>
                     <div className="mt-2.5 relative">
                       <textarea
-                        name="comment"
-                        // value={formData.comment}
-                        // onChange={handleInputChange}
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
                         placeholder="Xabaringizni kiriting"
                         className="block w-full px-4 py-4 placeholder-gray-500 transition-all duration-200 border border-gray-200 rounded-md resize-y focus:outline-none focus:border-blue-600 caret-blue-600"
                         rows="4"
                       ></textarea>
-                      {/* {errors.comment && <p className="text-red-500 text-sm">{errors.comment}</p>} */}
+                      {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
                     </div>
                   </div>
+
                   <div className="sm:col-span-2">
                     <button
                       type="submit"
@@ -107,5 +133,5 @@ export default function Contact() {
         </div>
       </div>
     </section>
-  )
+  );
 }
