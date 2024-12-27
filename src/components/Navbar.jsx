@@ -23,7 +23,8 @@ export default function Navbar() {
   return (
     <>
       <div className="flex justify-between  sm:w-[540px] px-4 md:w-full mx-auto md:px-32 lg:px-24 xl:px-28 lg:h-[80px] h-[70px] items-center">
-        <img className='h-[37px]' src="https://demo.gethugothemes.com/godocs/site/style-1/images/logo_hueaa96c5fb38bccdc9ca82bc91d45cf27_3832_310x0_resize_q90_h2_box_3.webp" alt="Logo" />
+        {/* <img className='h-[20px] ' src="../../public/logo-no-background (2).svg" alt="Logo" /> */}
+        <span className='text-4xl text-[crimson] font-medium'>DC</span>
         <div className="hidden lg:flex gap-6 items-center">
           <Link className='font-medium' to="/">Bosh sahifa</Link>
           <div className="relative">
