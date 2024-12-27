@@ -29,7 +29,7 @@ export default function News() {
       <main>
         <section>
           <div
-            className="relative grid w-full bg-[crimson] h-96 lg:h-[32rem] place-items-center"
+            className=" grid w-full bg-[crimson] h-96 lg:h-[32rem] place-items-center"
           >
             <div className="flex flex-col items-center mx-auto text-center">
               <h1 className="text-4xl font-semibold text-white uppercase md:text-6xl">

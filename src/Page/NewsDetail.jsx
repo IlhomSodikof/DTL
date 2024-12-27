@@ -129,7 +129,7 @@ export default function NewsDetail() {
               className="inline-flex items-center justify-center bg-[crimson] text-white px-5 py-3 rounded-lg hover:bg-[#dc143c] transition duration-300 transform hover:scale-105"
               whileHover={{ scale: 1.1 }}
             >
-              <FaTelegram className="mr-2 text-lg" /> Share on Telegram
+              <FaTelegram className="lg:mr-2 text-lg" /> <span className='hidden lg:block'>Share on Telegram</span>
             </motion.a>
           </div>
         </div>

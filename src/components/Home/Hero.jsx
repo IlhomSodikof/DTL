@@ -25,7 +25,6 @@ export default function Hero() {
       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">Foydali web sahifalar</h2>
-          {/* <p className="max-w-xl mx-auto mt-4 text-base leading-relaxed text-gray-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, animi nulla. Vero omnis sequi mollitia. Impedit, ipsa?</p> */}
         </div>
 
         <div className="grid grid-cols-1 gap-6 mt-12 lg:mt-16 xl:gap-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -35,7 +34,7 @@ export default function Hero() {
               <a className="overflow-hidden bg-white rounded shadow cursor-pointer" href={e?.link} key={e?.id} target='_blank'>
                 <div className="p-8">
                   <div className="flex items-center">
-                    <img className="flex-shrink-0 w-12 h-auto rounded-md" src={e?.image} alt="bu surat" />
+                    <img className="flex-shrink-0 w-12 h-12 rounded-md" src={e?.image} alt="bu surat" />
                     <div className="ml-5 mr-auto">
                       <p className="text-xl font-semibold text-black">{e?.title}</p>
                       <p className="mt-px text-sm text-gray-600">{e?.last_title} </p>
@@ -48,101 +47,7 @@ export default function Hero() {
                 </div>
               </a>
             )}
-          {/* <div className="overflow-hidden bg-white rounded shadow">
-            <div className="p-8">
-              <div className="flex items-center">
-                <img className="flex-shrink-0 w-12 h-auto" src="https://cdn.rareblocks.xyz/collection/celebration/images/integration/3/shopify-logo.png" alt="" />
-                <div className="ml-5 mr-auto">
-                  <p className="text-xl font-semibold text-black">Shopify</p>
-                  <p className="mt-px text-sm text-gray-600">Foydali web sayt uchun </p>
-                </div>
-                <svg className="hidden w-5 h-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </div>
-              <p className="text-base leading-relaxed text-gray-600 mt-7">Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-            </div>
-          </div> */}
 
-          {/* <div className="overflow-hidden bg-white rounded shadow">
-            <div className="p-8">
-              <div className="flex items-center">
-                <img className="flex-shrink-0 w-12 h-auto" src="https://cdn.rareblocks.xyz/collection/celebration/images/integration/3/slack-logo.png" alt="" />
-                <div className="ml-5 mr-auto">
-                  <p className="text-xl font-semibold text-black">Slack</p>
-                  <p className="mt-px text-sm text-gray-600">Foydali web sayt uchun </p>
-                </div>
-                <svg className="block w-6 h-6 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </div>
-              <p className="text-base leading-relaxed text-gray-600 mt-7">Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-            </div>
-          </div>
-
-          <div className="overflow-hidden bg-white rounded shadow">
-            <div className="p-8">
-              <div className="flex items-center">
-                <img className="flex-shrink-0 w-12 h-auto" src="https://cdn.rareblocks.xyz/collection/celebration/images/integration/3/shopify-logo.png" alt="" />
-                <div className="ml-5 mr-auto">
-                  <p className="text-xl font-semibold text-black">Shopify</p>
-                  <p className="mt-px text-sm text-gray-600">Foydali web sayt uchun </p>
-                </div>
-                <svg className="hidden w-5 h-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </div>
-              <p className="text-base leading-relaxed text-gray-600 mt-7">Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-            </div>
-          </div>
-
-          <div className="overflow-hidden bg-white rounded shadow">
-            <div className="p-8">
-              <div className="flex items-center">
-                <img className="flex-shrink-0 w-12 h-auto" src="https://cdn.rareblocks.xyz/collection/celebration/images/integration/3/intercom-logo.png" alt="" />
-                <div className="ml-5 mr-auto">
-                  <p className="text-xl font-semibold text-black">Intercom</p>
-                  <p className="mt-px text-sm text-gray-600">Foydali web sayt uchun </p>
-                </div>
-                <svg className="hidden w-5 h-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </div>
-              <p className="text-base leading-relaxed text-gray-600 mt-7">Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-            </div>
-          </div>
-
-          <div className="overflow-hidden bg-white rounded shadow">
-            <div className="p-8">
-              <div className="flex items-center">
-                <img className="flex-shrink-0 w-12 h-auto" src="https://cdn.rareblocks.xyz/collection/celebration/images/integration/3/twitter-logo.png" alt="" />
-                <div className="ml-5 mr-auto">
-                  <p className="text-xl font-semibold text-black">Twitter</p>
-                  <p className="mt-px text-sm text-gray-600">Foydali web sayt uchun </p>
-                </div>
-                <svg className="hidden w-5 h-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </div>
-              <p className="text-base leading-relaxed text-gray-600 mt-7">Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-            </div>
-          </div>
-
-          <div className="overflow-hidden bg-white rounded shadow">
-            <div className="p-8">
-              <div className="flex items-center">
-                <img className="flex-shrink-0 w-12 h-auto" src="https://cdn.rareblocks.xyz/collection/celebration/images/integration/3/sketch-logo.png" alt="" />
-                <div className="ml-5 mr-auto">
-                  <p className="text-xl font-semibold text-black">Sketch</p>
-                  <p className="mt-px text-sm text-gray-600">Foydali web sayt uchun </p>
-                </div>
-                <svg className="hidden w-5 h-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </div>
-              <p className="text-base leading-relaxed text-gray-600 mt-7">Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
-            </div>
-          </div> */}
         </div>
 
 

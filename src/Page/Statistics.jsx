@@ -11,7 +11,18 @@ import { DataService } from '../config/Dataservice';
 
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-white p-3 rounded shadow-md  shadow-blue-300">
+        <p className="text-lg font-medium">{label}</p>
+        <p className="text-sm">So'zlar soni: {payload[0].value}</p>
+      </div>
+    );
+  }
 
+  return "uf";
+};
 export default function StatisticPage() {
   const [apiData, setApiData] = useState([]);
   const fetchData = async () => {
@@ -79,7 +90,7 @@ export default function StatisticPage() {
                     boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
                   }}
                   labelStyle={{ fontWeight: 'bold', color: '#333' }}
-                  formatter={(value, name) => `${name}: ${value} words`}
+                  formatter={(value, name) => `${value} so'zlar`}
                 />
                 <Legend
                   verticalAlign="top"
@@ -92,7 +103,7 @@ export default function StatisticPage() {
 
             {/* Data Insights Section */}
             <div className="mt-4 sm:mt-6 md:mt-8 text-center">
-              <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-700 mb-4">Region Word Counts</h3>
+              <h3 className="text-base sm:text-lg md:text-xl font-semibold text-gray-700 mb-4">Mintaqadagi so'zlarni hisoblash</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
                 {apiData?.map((region, index) => (
                   <div
@@ -101,7 +112,7 @@ export default function StatisticPage() {
                     style={{ backgroundColor: COLORS[index % COLORS.length] }}
                   >
                     <h4 className="font-semibold text-sm sm:text-base md:text-lg text-white">{region.name}</h4>
-                    <p className="text-sm sm:text-lg md:text-xl text-white">{region.word_count} Words</p>
+                    <p className="text-sm sm:text-lg md:text-xl text-white">{region.word_count} So'zlar</p>
                   </div>
                 ))}
               </div>
@@ -111,7 +122,10 @@ export default function StatisticPage() {
               <CartesianGrid strokeDasharray="3 3" />
               <XAxis dataKey="name" />
               <YAxis allowDecimals={false} />
-              <Tooltip />
+              {/* <Tooltip /> */}
+              <Tooltip content={<CustomTooltip />} />
+
+
               <Bar dataKey="word_count" fill="#8884d8" barSize={50} />
             </BarChart>
           </ResponsiveContainer>) : (
@@ -133,7 +147,7 @@ export default function StatisticPage() {
                       ></div>
                     </div>
                     <p className="mt-2 text-sm">
-                      {item.word_count > 0 ? `Word Count: ${item.word_count}` : 'No words available'}
+                      {item.word_count > 0 ? `So'zlar soni: ${item.word_count}` : "Hech qanday so'z mavjud emas"}
                     </p>
                   </div>
                 </div>
