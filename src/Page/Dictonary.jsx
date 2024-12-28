@@ -198,7 +198,7 @@ export default function Dictonary() {
           setData(result.results.search_results || []);
 
 
-          console.log("bu searchmish", denger);
+          console.log("bu searchmish", result.count);
 
         } catch (error) {
           console.error("API data fetching error:", error);
@@ -282,7 +282,7 @@ export default function Dictonary() {
         <div className="flex flex-1 flex-col  lg:gap-4   h-full ">
           <div className='w-full  flex items-center flex-col  my-5 px-10 sm:px-20 lg:px-0'>
             <div className='rounded-2xl border-2 border-[#dc143c50] bg-transparent flex w-full md:w-[max-content] p-1'>
-              <input className=' lg:p-1 pl-3 outline-none  w-full  md:w-96 bg-transparent' type="search"
+              <input className=' lg:p-1 pl-3 outline-none  w-full  md:w-96 bg-transparent' type="text"
                 value={searchWord}
                 onChange={(e) => setSearchWord(e.target.value)}
               />
@@ -305,7 +305,7 @@ export default function Dictonary() {
                 <SearchResultCard key={index} result={result} />
               ))
             ) : (
-              searchWord ? <div className='flex flex-col items-center'>
+              data?.count > 0 || data?.results?.length > 0 ? <div className='flex flex-col items-center'>
 
                 <img className='lg:mt-10 h-[40vh] w-full' src="../../public/NoData.svg " alt="Resursiv rasm" />
                 <p className='text-gray-400 text-md lg:text-lg font-medium mt-5'>Qidruv natijasi topilmadi </p>

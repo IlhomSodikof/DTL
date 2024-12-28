@@ -25,7 +25,7 @@ export default function Home() {
 
               <div className=" overflow-hidden rounded-lg  hidden  lg:flex items-center  xl:w-5/12 pt-20" >
                 {/* <img src="https://demo.gethugothemes.com/godocs/site/style-1/images/banner_hu5a797fae0707814d8a70dee3017d6ae3_113805_346x352_resize_q90_h2_box.webp" loading="lazy" alt="Photo by Fakurian Design" className=" h-96 w-full object-contain object-center" /> */}
-                <img src="../../public/image1.png" loading="lazy" alt="Photo by Fakurian Design" className=" h-96 w-full object-contain object-center" />
+                <img src="./../public/image1.png" loading="lazy" alt="Photo by Fakurian Design" className=" h-96 w-full object-contain object-center" />
               </div>
             </section>
           </div>
