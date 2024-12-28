@@ -12,6 +12,7 @@ import Projects from './Page/Projects'
 import Hero from './components/Home/Hero'
 import Statistics from './Page/Statistics'
 import NewsDetail from './Page/NewsDetail'
+import Example from './Page/Example'
 
 
 export default function App() {
@@ -31,6 +32,10 @@ export default function App() {
         {
           path: "/projects",
           element: <Projects />,
+        },
+        {
+          path: "/example",
+          element: <Example />,
         },
         {
           path: "/dictonary",

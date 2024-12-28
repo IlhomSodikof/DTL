@@ -18,7 +18,7 @@ export default function Footer() {
               </li>
 
               <li>
-                <Link to="/projects" title="" className="text-sm text-black transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"> Loyha haqida  </Link>
+                {/* <Link to="/projects" title="" className="text-sm text-black transition-all duration-200 hover:text-opacity-80 focus:text-opacity-80"> Loyha haqida  </Link> */}
               </li>
 
               <li>

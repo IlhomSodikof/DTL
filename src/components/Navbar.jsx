@@ -24,7 +24,7 @@ export default function Navbar() {
     <>
       <div className="flex justify-between  sm:w-[540px] px-4 md:w-full mx-auto md:px-32 lg:px-24 xl:px-28 lg:h-[80px] h-[70px] items-center">
         {/* <img className='h-[20px] ' src="../../public/logo-no-background (2).svg" alt="Logo" /> */}
-        <span className='text-4xl text-[crimson] font-medium'>DC</span>
+        <Link to="/" className='text-4xl text-[crimson] font-medium'>DC</Link>
         <div className="hidden lg:flex gap-6 items-center">
           <Link className='font-medium' to="/">Bosh sahifa</Link>
           <div className="relative">
@@ -35,7 +35,7 @@ export default function Navbar() {
               Biz haqimizda
             </button>
             {isOpen && (
-              <div className="absolute right-0 mt-2 w-48 bg-white text-black shadow-md rounded">
+              <div className="absolute right-0 mt-2 w-48 bg-white text-black shadow-md rounded z-50">
                 <Link to='/team'
                   className="block px-4 py-2 hover:bg-gray-100"
                 >

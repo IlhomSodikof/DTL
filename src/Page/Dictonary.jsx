@@ -164,6 +164,7 @@ export default function Dictonary() {
   const [searchWord, setSearchWord] = useState("");
   const [loading, setLoading] = useState(false);
   const [tape, setTape] = useState("token");
+  const [denger, setDenger] = useState("")
 
   const fetchData = async () => {
     if (!searchWord) return;
@@ -176,7 +177,8 @@ export default function Dictonary() {
           );
           const result = await response.json();
           setData(result.results.search_results || []);
-          console.log("bu searchmish", result);
+          setDenger(result)
+          console.log("bu searchmish", denger);
 
         } catch (error) {
           console.error("API data fetching error:", error);
@@ -194,7 +196,9 @@ export default function Dictonary() {
           );
           const result = await response.json();
           setData(result.results.search_results || []);
-          console.log("bu searchmish", result);
+
+
+          console.log("bu searchmish", denger);
 
         } catch (error) {
           console.error("API data fetching error:", error);
@@ -212,6 +216,7 @@ export default function Dictonary() {
   const clearData = () => {
     setData([]);
     setSearchWord("");
+    setDenger([]);
   };
 
   const [active, setActive] = useState(0)
@@ -223,11 +228,11 @@ export default function Dictonary() {
           <li className='text-xl lg:text-3xl border-l-4 lg:border-l-0  font-medium cursor-pointer lg:w-[90%] py-0 lg:py-5 p-5 lg:border-b lg:text-center' onClick={() => { setTape("lemma"), clearData() }} style={{ borderColor: tape == "lemma" ? "crimson" : "", color: tape == "lemma" ? "crimson" : "" }}>Lema</li>
           <li className='text-xl lg:text-3xl  lg:border-l-0  font-medium cursor-pointer lg:w-[90%] py-0 lg:py-5 p-5  flex justify-end'>
             <button onClick={clearData}
-              className="group relative flex p-5 py-3 flex-col items-center justify-center overflow-hidden rounded-xl border-2 bg-[crimson]  hover:bg-red-600"
+              className="group relative flex p-3 py-2  lg:p-5  lg:py-3 flex-col items-center justify-center overflow-hidden rounded-xl border-2 bg-[crimson]  hover:bg-red-600"
             >
               <svg
                 viewBox="0 0 1.625 1.625"
-                className="absolute -top-7 fill-white delay-100 group-hover:top-5 group-hover:animate-[spin_1.4s] group-hover:duration-1000"
+                className="absolute  -top-3  lg:-top-7 fill-white delay-100 group-hover:top-4 lg:group-hover:top-5 group-hover:animate-[spin_1.4s] group-hover:duration-1000"
                 height="15"
                 width="15"
               >
@@ -274,18 +279,25 @@ export default function Dictonary() {
             </button></li>
 
         </ul>
-        <div className="flex flex-1 flex-col gap-4  h-full ">
-          <div className='w-full  flex justify-center m-3 my-5'>
-            <div className='rounded-2xl border-2 border-[#dc143c50] bg-transparent flex w-[max-content] p-1'>
-              <input className=' p-1 pl-3 outline-none  w-80 bg-transparent' type="search"
+        <div className="flex flex-1 flex-col  lg:gap-4   h-full ">
+          <div className='w-full  flex items-center flex-col  my-5 px-10 sm:px-20 lg:px-0'>
+            <div className='rounded-2xl border-2 border-[#dc143c50] bg-transparent flex w-full md:w-[max-content] p-1'>
+              <input className=' lg:p-1 pl-3 outline-none  w-full  md:w-96 bg-transparent' type="search"
                 value={searchWord}
                 onChange={(e) => setSearchWord(e.target.value)}
               />
-              <button className=' p-2 px-5  py-3   bg-[crimson] rounded-xl text-white flex gap-1 items-center' onClick={fetchData}><IoSearchOutline className='text-xl' />  </button>
-              {/* <button className=' p-2 pr-3 bg-[crimson] border-l-2 rounded-r-xl text-white flex gap-1 items-center'> <HiMiniXMark /> </button> */}
+              <button className=' p-2 px-3    bg-[crimson] rounded-xl text-white flex gap-1 items-center' onClick={fetchData}><IoSearchOutline className='text-xl' />  </button>
             </div>
+            <div className='flex gap-2 mt-2'>
+              {denger?.results?.text_count && <p className='text-gray-400 font-medium'>{denger?.results?.text_count} ta hujjatda {denger?.results?.total_occurrences} ta so'z uchradi</p>}
+            </div>
+            {denger?.results?.text_count && <div className='flex flex-col items-start justify-center w-full gap-2 mt-5 px-8 '>
+              <p className='text-gray-400 text-md lg:text-lg font-medium'><span className='text-gray-600 text-lg lg:text-xl font-medium'>Gramatik tavsif:</span> {denger?.results?.word_details?.grammatical_description} </p>
+              <p className='text-gray-400 text-md lg:text-lg font-medium'><span className='text-gray-600 text-lg lg:text-xl font-medium'>Lug'aviy shakl:</span> {denger?.results?.word_details?.lexical_form} </p>
+              <p className='text-gray-400 text-md lg:text-lg font-medium'><span className='text-gray-600 text-lg lg:text-xl font-medium'>Izoh:</span> {denger?.results?.word_details?.comment} </p>
+            </div>}
           </div>
-          {tape == "token" && <div className="flex flex-col h-[70vh] overflow-auto pb-7">
+          {tape == "token" && <div className="flex flex-col h-[70vh] overflow-auto   pb-7">
             {loading ? (
               <p className='flex h-full w-full items-center justify-center text-2xl'>Yuklanmoqda...</p>
             ) : data.length > 0 ? (
@@ -293,10 +305,22 @@ export default function Dictonary() {
                 <SearchResultCard key={index} result={result} />
               ))
             ) : (
-              searchWord ? <p className='flex h-full w-full items-center justify-center text-2xl'>Natija topilmadi</p> : <p className='flex h-full w-full items-center justify-center text-2xl'>Saxifaga hush kelibsan</p>
+              searchWord ? <div className='flex flex-col items-center'>
+
+                <img className='lg:mt-10 h-[40vh] w-full' src="../../public/NoData.svg " alt="Resursiv rasm" />
+                <p className='text-gray-400 text-md lg:text-lg font-medium mt-5'>Qidruv natijasi topilmadi </p>
+              </div> : <div className='flex flex-col items-center'>
+                <picture>
+                  <source srcSet="../../public/BigSearch.svg" media="(min-width: 1024px)" />
+                  <source srcSet="../../public/Search.svg" media="(max-width: 1024px)" />
+                  <img className='lg:mt-10 h-[40vh] w-full' src="../../public/Search.svg " alt="Resursiv rasm" />
+                </picture>
+                <p className='text-gray-400 text-md lg:text-lg font-medium mt-5'>Qidirmoqchi bo'lgan so'zingizni kiriting</p>
+              </div>
             )}
           </div>
           }
+
 
           {tape == "lemma" && <div className="flex flex-col h-[70vh] overflow-auto pb-7">
             {loading ? (
@@ -307,7 +331,20 @@ export default function Dictonary() {
               ))
             ) : (
 
-              searchWord ? <p className='flex h-full w-full items-center justify-center text-2xl'>Natija topilmadi</p> : <p className='flex h-full w-full items-center justify-center text-2xl'>Saxifaga hush kelibsan</p>
+              searchWord ? <div className='flex flex-col items-center'>
+
+                <img className='lg:mt-10 h-[40vh] w-full' src="../../public/NoData.svg " alt="Resursiv rasm" />
+
+                <p className='text-gray-400 text-md lg:text-lg font-medium mt-5'>Qidruv natijasi topilmadi </p>
+              </div> : <div className='flex flex-col items-center'>
+                <picture>
+                  <source srcSet="../../public/BigSearch.svg" media="(min-width: 1024px)" />
+                  <source srcSet="../../public/Search.svg" media="(max-width: 1024px)" />
+                  <img className='lg:mt-10 h-[40vh] w-full' src="../../public/Search.svg " alt="Resursiv rasm" />
+                </picture>
+                <p className='text-gray-400 text-md lg:text-lg font-medium mt-5'>Qidirmoqchi bo'lgan so'zingizni kiriting</p>
+              </div>
+
             )}
           </div>
           }

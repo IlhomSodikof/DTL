@@ -90,7 +90,7 @@ export default function NewsDetail() {
       >
         {/* News Header */}
         <div className="relative w-full h-[400px] sm:h-128 bg-cover bg-center"
-          style={{ backgroundImage: `url("https://images.unsplash.com/photo-1608086042577-50e786b68c84?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwzfHx8ZW58MHx8fHx8)` }}>
+          style={{ backgroundImage: `url(${apiData?.image})` }}>
           <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-70" />
           <div className="absolute inset-x-0 bottom-6 sm:bottom-12 text-center text-white">
             <motion.h1

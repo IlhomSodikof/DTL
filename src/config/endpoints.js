@@ -10,9 +10,10 @@ export const endpoints = {
   topSozlar: "/top-search/",
   project: "/publications/",
   contact: "/contact/create/",
-  // scTeamById: (id) => `/scientific-team/${id}/`,
+  contactData: `/contact/about/`,
 
-  // texts: "/text/",
+  projectCategories: "/project/categories/",
+  projectCategoriesById: (id) => `/project/category/${id}/`,
   // sites: "/useful-sites/",
   // slides: "/sliders/",
 };

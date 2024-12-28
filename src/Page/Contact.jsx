@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DataService } from "../config/Dataservice";
 import { endpoints } from "../config/endpoints";
 export default function Contact() {
@@ -26,6 +26,24 @@ export default function Contact() {
     }
   };
 
+
+
+  const [apiData, setApiData] = useState([]);
+  const fetchData = async () => {
+    try {
+      const response = await DataService.get(endpoints.contactData);
+      setApiData(response);
+      console.log("BU TEAM", response);
+
+    } catch (error) {
+      console.error("Error fetching category data:", error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+
+
+  }, []);
   return (
     <section className="py-10 sm:py-16 lg:py-24 mt-[100px]">
       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
@@ -41,8 +59,9 @@ export default function Contact() {
               <div className="p-6  ">
                 <p className="mt-6 text-lg font-medium ">Telefon</p>
                 <p className="mt-1 text-sm font-medium ">
-                  {/* {apiDataA[0]?.phone} */}
-                  +998971234567</p>
+                  {apiData?.phone}
+                  {/* +998971234567 */}
+                </p>
               </div>
             </div>
 
@@ -50,20 +69,20 @@ export default function Contact() {
               <div className="p-6">
                 <p className="mt-6 text-lg font-medium ">Elektron manzil</p>
                 <p className="mt-1 text-sm font-medium ">
-                  {/* {apiDataA[0]?.email} */}
-                  farhodganijonov81@gmail.com
+                  {apiData?.email}
+                  {/* farhodganijonov81@gmail.com */}
                 </p>
               </div>
             </div>
 
             <div className="overflow-hidden bg-base-300 rounded-xl shadow-[#cccccc] shadow-md lg:shadow-lg">
-              <div className="p-6">
+              <a href={apiData?.location_link} target="_blank" className="p-6">
                 <p className="mt-6 text-lg font-medium ">Joylashuv</p>
                 <p className="mt-1 text-sm font-medium ">
-                  {/* {apiDataA[0]?.location} */}
-                  yunusobot
+                  {apiData?.location_name}
+                  {/* yunusobot */}
                 </p>
-              </div>
+              </a>
             </div>
           </div>
 

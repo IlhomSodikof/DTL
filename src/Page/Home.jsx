@@ -19,7 +19,7 @@ export default function Home() {
 
                 <p className="mb-8 leading-relaxed text-gray-500 md:mb-12 lg:mb-10 lg:w-4/5  xl:text-lg">Lorem ipsum dolor amet, consetetur sadiffspscing elitr, diam nonumy invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua At.</p>
 
-                <Link className="inline-block rounded bg-[crimson] px-6 py-3 text-center text-sm font-semibold text-white outline-none  transition duration-100 hover:bg-[#ee3459] focus-visible:ring  md:text-base">Loyha haqida</Link>
+                <Link to="/example" className="inline-block rounded bg-[crimson] px-6 py-3 text-center text-sm font-semibold text-white outline-none  transition duration-100 hover:bg-[#ee3459] focus-visible:ring  md:text-base">Loyha haqida</Link>
 
               </div>
 
