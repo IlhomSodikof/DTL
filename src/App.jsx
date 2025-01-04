@@ -13,6 +13,7 @@ import Hero from './components/Home/Hero'
 import Statistics from './Page/Statistics'
 import NewsDetail from './Page/NewsDetail'
 import Example from './Page/Example'
+import DictonaryDetail from './Page/DictonaryDetail'
 
 
 export default function App() {
@@ -52,6 +53,10 @@ export default function App() {
         {
           path: "/news/:id",
           element: <NewsDetail />,
+        },
+        {
+          path: "/text/:id",
+          element: <DictonaryDetail />,
         },
         {
           path: "/websites",

@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaTelegram } from 'react-icons/fa';
 import dateFormat from "dateformat";
+import SEO from '../components/Seo';
 
 
 
@@ -27,61 +28,30 @@ export default function NewsDetail() {
 
 
   }, []);
+
+
+
+  const shareUrl = encodeURIComponent(window.location.href);
+  const shareTitle = apiData?.title ? `**${apiData.title.toUpperCase()}**` : "**MAQOLA NOMI**";
+  const shareText = encodeURIComponent(
+    `${shareTitle}\n\n${apiData?.text?.substring(0, 200)}... \n\n 🔗 Rasm: ${apiData?.image}`
+  );
+
+
   return (
-    // <div>
-    //   <div className="px-4 lg:p-20">
-    //     <div className=" dark:text-gray-900">
-    //       <div className="container grid grid-cols-12 mx-auto">
-    //         <div className="flex flex-col justify-center col-span-12 align-middle dark:bg-gray-300 bg-no-repeat bg-cover lg:col-span-6 lg:h-auto" style={{ backgroundImage: `url('https:  encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhi7ap40nXnubmpmYdOe7xkAElgnSzD2KAtg&s')`, backgroundPosition: "center center", backgroundBlendMode: "multiply", backgroundSize: "cover" }}>
-    //           <div className="flex flex-col items-center p-8 py-12 text-center dark:text-gray-800">
-    //             <span>12 Dec</span>
-    //             <h1 className="py-4 text-5xl font-bold">Lorem, ipsum dolor sit amet consectetur adipisicing.</h1>
-    //             <p className="pb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, a!</p>
-    //             <svg xmlns="http:  www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-7 h-7">
-    //               <path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-    //             </svg>
-    //           </div>
-    //         </div>
-    //         <div className="flex flex-col col-span-12 p-6 divide-y lg:col-span-6 lg:p-10">
-    //           <div className="pt-6 pb-4 space-y-2">
-    //             <span>12 Dec</span>
-    //             <h1 className="text-3xl font-bold">Lorem ipsum dolor sit.</h1>
-    //             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, a!</p>
-    //             <a rel="noopener noreferrer" href="#" className="inline-flex items-center py-2 space-x-2 text-sm dark:text-violet-600">
-    //               <span>Batafsil</span>
-    //               <svg xmlns="http:  www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-    //                 <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-    //               </svg>
-    //             </a>
-    //           </div>
-    //           <div className="pt-6 pb-4 space-y-2">
-    //             <span>12 Dec</span>
-    //             <h1 className="text-3xl font-bold">Lorem ipsum dolor sit.</h1>
-    //             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, a!</p>
-    //             <a rel="noopener noreferrer" href="#" className="inline-flex items-center py-2 space-x-2 text-sm dark:text-violet-600">
-    //               <span>Batafsil</span>
-    //               <svg xmlns="http:  www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-    //                 <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-    //               </svg>
-    //             </a>
-    //           </div>
-    //           <div className="pt-6 pb-4 space-y-2">
-    //             <span>12 Dec</span>
-    //             <h1 className="text-3xl font-bold">Lorem ipsum dolor sit.</h1>
-    //             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, a!</p>
-    //             <a rel="noopener noreferrer" href="#" className="inline-flex items-center py-2 space-x-2 text-sm dark:text-violet-600">
-    //               <span>Batafsil</span>
-    //               <svg xmlns="http:  www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
-    //                 <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd"></path>
-    //               </svg>
-    //             </a>
-    //           </div>
-    //         </div>
-    //       </div>
-    //     </div>
-    //   </div>
-    // </div>
+
     <div className="w-full min-h-screen flex flex-col items-center justify-start p-6 sm:p-8 md:p-10">
+      <SEO
+        title={apiData?.title}
+        image={apiData?.image}
+        discription={apiData?.text}
+      />
+      <SEO
+        title={"bu title  nomi content"}
+        description={apiData?.text?.substring(0, 150)}
+        image={apiData?.image}
+        url={window.location.href}
+      />
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -123,7 +93,8 @@ export default function NewsDetail() {
           {/* Share Section */}
           <div className="mt-6 flex justify-start items-center space-x-4">
             <motion.a
-              href={`https://t.me/share/url?url=${encodeURIComponent(window.location.href)}`}
+              href={`https://t.me/share/url?url=${shareUrl}&text=${shareText}`}
+              // href={telegramShareLink}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center bg-[crimson] text-white px-5 py-3 rounded-lg hover:bg-[#dc143c] transition duration-300 transform hover:scale-105"

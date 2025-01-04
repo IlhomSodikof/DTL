@@ -1,11 +1,15 @@
 import { useState } from 'react'
 import { IoSearchOutline } from "react-icons/io5";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import SEO from '../components/Seo';
+import Loader from '../components/Loader';
 
 // import React, { useState } from 'react';
 // import { Link } from 'react-router-dom';
 
 const SearchResultCard = ({ result }) => {
+  const navigate = useNavigate()
+
   const [hoverData, setHoverData] = useState(null);
   const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
@@ -60,9 +64,16 @@ const SearchResultCard = ({ result }) => {
   };
 
   return (
-    <div className='relative flex flex-col gap-[10px] mx-10 p-10 shadow-[#cccccc] shadow-xl bg-white rounded-md' style={{ marginTop: '50px' }}>
+    <div className='relative flex flex-col gap-[10px] lg:mx-10 mx-5 md:p-5 lg:p-10 md:shadow-[#cccccc] md:shadow-xl bg-white rounded-md' style={{ marginTop: '50px' }}>
+      {/* <SEO
+        title={apiData?.fullname}
+        image={apiData?.image}
+        discription={apiData?.fullname}
+      /> */}
       <p className='text-left text-[18px] text-gray-500 text-medium'> {highlightWords(result.content, result.matches)}
-        <Link to="/" className="text-blue-500 hover:cursor-pointer hover:underline pl-2">ko'proq...</Link>
+        <Link
+          onClick={() => navigate(`/text/${result?.id}`)}
+          className="text-blue-500 hover:cursor-pointer hover:underline pl-2">ko'proq...</Link>
       </p>
       {hoverData && isHovered && (
         <div
@@ -97,6 +108,8 @@ const SearchResultCard = ({ result }) => {
 
 
 function LemmaCard({ result }) {
+  const navigate = useNavigate()
+
   const [highlightedWord, setHighlightedWord] = useState(null);
   const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0 });
 
@@ -107,6 +120,8 @@ function LemmaCard({ result }) {
   const handleWordLeave = () => {
     setHighlightedWord(null);
   };
+  console.log("bu men qidirgan narsa ", result);
+
   return (
     <div>
       <div className='flex flex-col gap-[10px] mx-10  p-10  shadow-[#cccccc] shadow-xl bg-white rounded-md' style={{ marginTop: '50px' }}>
@@ -130,7 +145,9 @@ function LemmaCard({ result }) {
             </span>
           ))}
 
-          <Link to="/" className="text-blue-500 hover:cursor-pointer hover:underline pl-2">ko'proq...</Link>
+          <Link
+            onClick={() => navigate(`/text/${result?.id}`)}
+            className="text-blue-500 hover:cursor-pointer hover:underline pl-2">ko'proq...</Link>
         </p>
       </div>
 
@@ -165,6 +182,7 @@ export default function Dictonary() {
   const [loading, setLoading] = useState(false);
   const [tape, setTape] = useState("token");
   const [denger, setDenger] = useState("")
+  const [codeSt, setCodeSt] = useState(404)
 
   const fetchData = async () => {
     if (!searchWord) return;
@@ -175,18 +193,20 @@ export default function Dictonary() {
           const response = await fetch(
             `https://dictionary.uzfati.uz/api/text/search/?prefix=${searchWord}&search_type=token`
           );
+          setCodeSt(response.status)
+          console.log(response.status);
+
           const result = await response.json();
           setData(result.results.search_results || []);
           setDenger(result)
-          console.log("bu searchmish", denger);
+          console.log("bu searchmish denger denger", result);
 
         } catch (error) {
           console.error("API data fetching error:", error);
+
         } finally {
           setLoading(false);
         }
-        console.log("bu tokendaddddddddddd");
-
         break;
 
       case "lemma":
@@ -198,7 +218,7 @@ export default function Dictonary() {
           setData(result.results.search_results || []);
 
 
-          console.log("bu searchmish", result.count);
+          console.log("bu searchmish", result.error);
 
         } catch (error) {
           console.error("API data fetching error:", error);
@@ -219,10 +239,11 @@ export default function Dictonary() {
     setDenger([]);
   };
 
-  const [active, setActive] = useState(0)
+
   return (
     <>
-      <div className="lg:px-24 flex flex-col lg:flex-row h-[80vh]  my-20">
+      <div className="lg:px-24 flex flex-col lg:flex-row min-h-[80vh]  my-20">
+        <SEO title={"Qidruv bo'limi | DC"} description={"Qidruv bo'limi | DC"} image="../../public/Search.svg" />
         <ul className='flex flex-row pl-10 mb-5 lg:mb-0   lg:flex-col lg:w-56 xl:w-72  items-center h-full pt-10 border-r'>
           <li className='text-xl lg:text-3xl border-l-4 lg:border-l-0  font-medium cursor-pointer lg:w-[90%] py-0 lg:py-5 p-5 lg:border-b lg:text-center' onClick={() => { setTape("token"), clearData() }} style={{ borderColor: tape == "token" ? "crimson" : "", color: tape == "token" ? "crimson" : "" }}>Token</li>
           <li className='text-xl lg:text-3xl border-l-4 lg:border-l-0  font-medium cursor-pointer lg:w-[90%] py-0 lg:py-5 p-5 lg:border-b lg:text-center' onClick={() => { setTape("lemma"), clearData() }} style={{ borderColor: tape == "lemma" ? "crimson" : "", color: tape == "lemma" ? "crimson" : "" }}>Lema</li>
@@ -279,7 +300,7 @@ export default function Dictonary() {
             </button></li>
 
         </ul>
-        <div className="flex flex-1 flex-col  lg:gap-4   h-full ">
+        <div className="flex flex-1 flex-col  lg:gap-0   h-full ">
           <div className='w-full  flex items-center flex-col  my-5 px-10 sm:px-20 lg:px-0'>
             <div className='rounded-2xl border-2 border-[#dc143c50] bg-transparent flex w-full md:w-[max-content] p-1'>
               <input className=' lg:p-1 pl-3 outline-none  w-full  md:w-96 bg-transparent' type="text"
@@ -288,19 +309,19 @@ export default function Dictonary() {
               />
               <button className=' p-2 px-3    bg-[crimson] rounded-xl text-white flex gap-1 items-center' onClick={fetchData}><IoSearchOutline className='text-xl' />  </button>
             </div>
-            <div className='flex gap-2 mt-2'>
-              {denger?.results?.text_count && <p className='text-gray-400 font-medium'>{denger?.results?.text_count} ta hujjatda {denger?.results?.total_occurrences} ta so'z uchradi</p>}
-            </div>
-            {denger?.results?.text_count && <div className='flex flex-col items-start justify-center w-full gap-2 mt-5 px-8 '>
+
+            {denger?.results?.text_count && codeSt == 200 ? <div className='flex flex-col items-start justify-center w-full gap-[3px] mt-5 lg:px-8 '>
               <p className='text-gray-400 text-md lg:text-lg font-medium'><span className='text-gray-600 text-lg lg:text-xl font-medium'>Gramatik tavsif:</span> {denger?.results?.word_details?.grammatical_description} </p>
               <p className='text-gray-400 text-md lg:text-lg font-medium'><span className='text-gray-600 text-lg lg:text-xl font-medium'>Lug'aviy shakl:</span> {denger?.results?.word_details?.lexical_form} </p>
               <p className='text-gray-400 text-md lg:text-lg font-medium'><span className='text-gray-600 text-lg lg:text-xl font-medium'>Izoh:</span> {denger?.results?.word_details?.comment} </p>
-            </div>}
+            </div> : ""} <div className='flex w-full justify-end gap-2 mt-3 lg:px-8'>
+              {denger?.results?.text_count && codeSt == 200 ? <p className='text-gray-400 text-[17px] font-medium'><span className='text-gray-800 '>{denger?.results?.text_count}</span> ta hujjatda <span className='text-gray-800'>{denger?.results?.total_occurrences}</span> ta so'z uchradi</p> : ""}
+            </div>
           </div>
           {tape == "token" && <div className="flex flex-col h-[70vh] overflow-auto   pb-7">
             {loading ? (
-              <p className='flex h-full w-full items-center justify-center text-2xl'>Yuklanmoqda...</p>
-            ) : data.length > 0 ? (
+              <p className='flex h-full w-full items-center justify-center text-2xl'><Loader /></p>
+            ) : data.length > 0 && codeSt == 200 ? (
               data.map((result, index) => (
                 <SearchResultCard key={index} result={result} />
               ))
@@ -324,19 +345,14 @@ export default function Dictonary() {
 
           {tape == "lemma" && <div className="flex flex-col h-[70vh] overflow-auto pb-7">
             {loading ? (
-              <p className='flex h-full w-full items-center justify-center text-2xl'>Yuklanmoqda...</p>
-            ) : data.length > 0 ? (
+              <p className='flex h-full w-full items-center justify-center text-2xl'><Loader /></p>
+            ) : data.length > 0 && codeSt == 200 ? (
               data.map((result, index) => (
                 <LemmaCard key={index} result={result} />
               ))
             ) : (
 
-              searchWord ? <div className='flex flex-col items-center'>
-
-                <img className='lg:mt-10 h-[40vh] w-full' src="../../public/NoData.svg " alt="Resursiv rasm" />
-
-                <p className='text-gray-400 text-md lg:text-lg font-medium mt-5'>Qidruv natijasi topilmadi </p>
-              </div> : <div className='flex flex-col items-center'>
+              <div className='flex flex-col items-center'>
                 <picture>
                   <source srcSet="../../public/BigSearch.svg" media="(min-width: 1024px)" />
                   <source srcSet="../../public/Search.svg" media="(max-width: 1024px)" />
@@ -349,27 +365,9 @@ export default function Dictonary() {
           </div>
           }
 
-
-          {/* <div className="flex flex-col h-[7  0vh] overflow-auto pb-7">
-            <div className='flex flex-col gap-[10px] mx-10  p-10  shadow-[#cccccc] shadow-xl bg-white rounded-md' style={{ marginTop: '50px' }}>
-              <h3 className='text-left text-[24px] font-bold'>"ipsLorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium?.um"</h3>
-              <p className='text-left text-[18px] text-gray-500 text-medium'> "Lorem ipsum dolor amet consectetur adipisicing elit. Praesentium? dolor sit amet consectetur adipisicing elit. Praesentium?  consectetur adipisicing elit. Praesentium? sit amet consectetur adipisicing elit. Praesentium? dolor sit amet consectetur adipisicing elit. Praesentium?  consectetur adipisicing elit. Praesentium?" : "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium?"
-                <Link to="/" className="text-blue-500 hover:cursor-pointer hover:underline pl-2">ko'proq...</Link>
-              </p>
-            </div>
-          </div> */}
         </div>
       </div >
     </>
   )
 }
 
-
-// import React from 'react'
-// import Search from './Search'
-
-// export default function Dictonary() {
-//   return (
-//     <div><Search /></div>
-//   )
-// }

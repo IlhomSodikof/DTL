@@ -4,11 +4,17 @@ import { Link } from "react-router-dom"
 import NewsHm from '../components/Home/NewsHm'
 import WebSites from '../components/WebSites'
 import Mansory from '../components/Home/Mansory'
+import SEO from '../components/Seo'
 
 export default function Home() {
   return (
     <>
       <div className="lg:px-20 m-14 lg:mt-5">
+        <SEO
+          title="Bosh sahifa"
+          image="./image.png"
+          discription="Bosh sahifaga o'tish"
+        />
         <div className="bg-white pb-6 sm:pb-8 lg:pb-12" >
           <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
 
@@ -25,7 +31,7 @@ export default function Home() {
 
               <div className=" overflow-hidden rounded-lg  hidden  lg:flex items-center  xl:w-5/12 pt-20" >
                 {/* <img src="https://demo.gethugothemes.com/godocs/site/style-1/images/banner_hu5a797fae0707814d8a70dee3017d6ae3_113805_346x352_resize_q90_h2_box.webp" loading="lazy" alt="Photo by Fakurian Design" className=" h-96 w-full object-contain object-center" /> */}
-                <img src="./image1.png" loading="lazy" alt="Photo by Fakurian Design" className=" h-96 w-full object-contain object-center" />
+                <img src="../image1.png" loading="lazy" alt="Photo by Fakurian Design" className=" h-96 w-full object-contain object-center" />
               </div>
             </section>
           </div>

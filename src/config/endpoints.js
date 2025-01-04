@@ -7,6 +7,7 @@ export const endpoints = {
   foydalisaytlar: "/useful-link/",
   oxirtgifoydalisaytlar: "/useful-link/latest/",
 
+  topSozlarById: (id) => `/top-search/${id}/`,
   topSozlar: "/top-search/",
   project: "/publications/",
   contact: "/contact/create/",

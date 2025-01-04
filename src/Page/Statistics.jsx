@@ -7,6 +7,7 @@ import { PiChartDonutFill } from "react-icons/pi";
 import { useEffect, useState } from "react";
 import { endpoints } from '../config/endpoints';
 import { DataService } from '../config/Dataservice';
+import SEO from '../components/Seo';
 
 
 
@@ -43,9 +44,15 @@ export default function StatisticPage() {
   const maxCount = Math.max(...apiData?.map((item) => item.word_count));
   const [num, setNum] = useState(2)
   return (
-    <div className='my-20'> <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4 sm:mb-6 md:mb-8 text-center">
-      So'zlar soni bo'yicha statistika
-    </h2>
+    <div className='my-20'>
+      <SEO
+        title="Statistika bo'limi"
+        image="./image.png"
+        discription="bu bo'limda qidirilgan so'zlar haqida malumot olasiz va ular qaysi hududlarga to'g'ri kelishini bilishingiz mumkin"
+      />
+      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4 sm:mb-6 md:mb-8 text-center">
+        So'zlar soni bo'yicha statistika
+      </h2>
       <main className="flex justify-end lg:px-28 px-10 mb-5 gap-5">
         <div className="text-2xl border rounded-lg bg-[crimson] text-white p-3" onClick={() => setNum(2)}><PiChartBarFill /></div>
         <div className="text-2xl border rounded-lg bg-[crimson] text-white p-3" onClick={() => setNum(1)}><PiChartDonutFill /></div>

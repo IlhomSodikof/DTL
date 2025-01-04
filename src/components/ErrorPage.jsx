@@ -8,7 +8,7 @@ export default function ErrorPage() {
     <div className="h-screen w-screen bg-gray-50 flex items-center lg:px-24">
       <div className="container flex flex-col md:flex-row items-center justify-between px-5 text-gray-700">
         <div className="w-full lg:w-1/2 mx-8">
-          <div className="text-7xl text-[crimson] font-dark font-extrabold mb-8"> 404</div>
+          {/* <div className="text-7xl text-[crimson] font-dark font-extrabold mb-8"> 404</div> */}
           <p className="text-xl sm:text-2xl md:text-3xl font-light leading-normal mb-8">
             Kechirasiz, siz qidirayotgan sahifani topa olmadik.
           </p>
@@ -27,7 +27,7 @@ export default function ErrorPage() {
           {/* <a href="#" className="px-5 inline py-3 text-sm font-medium leading-5 shadow-2xl text-white transition-all duration-400 border border-transparent rounded-md focus:outline-none bg-[crimson] active:bg-[crimson] hover:bg-red-700">back to homepage</a> */}
         </div>
         <div className="w-full lg:flex lg:justify-end lg:w-1/2 mx-5 my-12">
-          <img src="https://user-images.githubusercontent.com/43953425/166269493-acd08ccb-4df3-4474-95c7-ad1034d3c070.svg" className="" alt="Page not found" />
+          <img src="../NotFound.svg" className="" alt="Page not found" />
         </div>
 
       </div>
