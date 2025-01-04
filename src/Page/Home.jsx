@@ -9,11 +9,11 @@ export default function Home() {
   return (
     <>
       <div className="lg:px-20 m-14 lg:mt-5">
-        <Seo
+        {/* <Seo
           title="Bosh sahifa"
           image="./image.png"
           discription="Bosh sahifaga o'tish"
-        />
+        /> */}
         <div className="bg-white pb-6 sm:pb-8 lg:pb-12" >
           <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
 

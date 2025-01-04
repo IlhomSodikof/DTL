@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { endpoints } from '../../config/endpoints';
 import { DataService } from '../../config/Dataservice';
-import SEO from '../Seo';
+import Seo from '../Seo';
 
 
 export default function Hero() {
@@ -23,7 +23,7 @@ export default function Hero() {
   }, []);
   return (
     <section className="py-10 bg-gray-50 sm:py-16 lg:py-24">
-      <SEO title={"Foydali havolalar"} description={"Foydali havolalar"} image={apiData?.results[0]?.image} url={window.location.href} />
+      <Seo title={"Foydali havolalar"} description={"Foydali havolalar"} image={apiData?.results[0]?.image} url={window.location.href} />
       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-bold leading-tight text-black sm:text-4xl lg:text-5xl">Foydali havolalar</h2>
