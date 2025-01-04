@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 
-function SEO({ title, description, image, url }) {
+function Seo({ title, description, image, url }) {
   return (
     <Helmet>
       {/* <title>{`${title} ${description}`}</title> */}
@@ -14,4 +14,4 @@ function SEO({ title, description, image, url }) {
   );
 }
 
-export default SEO;
+export default Seo;
