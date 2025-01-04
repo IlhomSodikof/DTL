@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry"
 import { DataService } from '../config/Dataservice';
 import { endpoints } from '../config/endpoints';
-import Seo from '../components/Seo';
+// import Seo from '../components/Seo';
 
 
 
@@ -25,11 +25,11 @@ export default function Team() {
   }, []);
   return (
     <div>
-      <Seo
+      {/* <Seo
         title="Ilmiy xodimlar bo'limi"
         image="./image.png"
         discription="ilmiy xodimlar haqida to'liq malumot olishingiz mumkin "
-      />
+      /> */}
       <h2 className='text-2xl sm:text-3xl md:text-4xl  lg:text-5xl xl:text-6xl 2xl:text-7xl  mt-20 font-normal text-center mb-20 '> Ilmiy Xodimlar Va  Loyha <br />  Qatnashchilari
       </h2>
       <div className='relative mb-20'
