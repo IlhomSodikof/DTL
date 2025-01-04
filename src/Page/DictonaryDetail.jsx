@@ -42,7 +42,6 @@ import { useParams } from "react-router-dom";
 import { DataService } from "../config/Dataservice";
 import { endpoints } from "../config/endpoints";
 import { BiSolidQuoteAltRight, BiSolidQuoteAltLeft } from "react-icons/bi";
-// import Seo from "../components/Seo";
 
 export default function DictonaryDetail() {
   const route = useParams();
@@ -73,11 +72,6 @@ export default function DictonaryDetail() {
 
   return (
     <div className="p-5 sm:px-10 md:px-20 lg:px-24 lg:mt-20">
-      {/* <Seo
-        title={apiData?.word_name}
-        image="./image.png"
-        discription="Qidrilgan so'z haqida to'liq malumot oling.."
-      /> */}
       <div className="h-[max-content] flex flex-col gap-5 sm:shadow-lg rounded-lg p-4 sm:p-6 md:p-8 lg:p-10">
         <h1 className="lg:text-4xl text-2xl sm:text-3xl text-center flex justify-center gap-2 text-gray-600 font-bold">
           <BiSolidQuoteAltLeft className="text-sm" />

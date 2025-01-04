@@ -7,9 +7,6 @@ import { PiChartDonutFill } from "react-icons/pi";
 import { useEffect, useState } from "react";
 import { endpoints } from '../config/endpoints';
 import { DataService } from '../config/Dataservice';
-// import Seo from '../components/Seo';
-
-
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 const CustomTooltip = ({ active, payload, label }) => {
@@ -45,11 +42,6 @@ export default function StatisticPage() {
   const [num, setNum] = useState(2)
   return (
     <div className='my-20'>
-      {/* <Seo
-        title="Statistika bo'limi"
-        image="./image.png"
-        discription="bu bo'limda qidirilgan so'zlar haqida malumot olasiz va ular qaysi hududlarga to'g'ri kelishini bilishingiz mumkin"
-      /> */}
       <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-800 mb-4 sm:mb-6 md:mb-8 text-center">
         So'zlar soni bo'yicha statistika
       </h2>

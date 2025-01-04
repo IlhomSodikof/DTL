@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { DataService } from '../config/Dataservice';
 import { endpoints } from '../config/endpoints';
-// import { Link } from 'react-router-dom';
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-// import Seo from '../components/Seo';
-
 
 export default function Example() {
   const [apiData, setApiData] = useState([]);
@@ -53,11 +50,6 @@ export default function Example() {
 
   return (
     <div className='flex lg:flex-row flex-col gap-2 relative mt-10  px-5 md:px-10 lg:px-24'>
-      {/* <Seo
-        title={apiData[0]?.name}
-        image="./image.png"
-        discription="Loyha haqida batafsil malumot oling..."
-      /> */}
       <div className='w-full relative flex mb-4 justify-between items-center text-end pb-2 lg:hidden   h-12 border-b '>
         <span className="text-lg font-medium">Bo'lim: {apiDataid?.name}</span>
         <button

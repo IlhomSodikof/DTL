@@ -2,18 +2,12 @@ import { useState } from 'react'
 import { IoSearchOutline } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom"
 import Loader from '../components/Loader';
-// import Seo from '../components/Seo';
-
-// import React, { useState } from 'react';
-// import { Link } from 'react-router-dom';
 
 const SearchResultCard = ({ result }) => {
   const navigate = useNavigate()
-
   const [hoverData, setHoverData] = useState(null);
   const [hoverPosition, setHoverPosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
-
   const highlightWords = (content, matches) => {
     if (!matches || matches.length === 0) return content;
     const sortedMatches = [...matches].sort((a, b) => a.start_idx - b.start_idx);
@@ -65,11 +59,6 @@ const SearchResultCard = ({ result }) => {
 
   return (
     <div className='relative flex flex-col gap-[10px] lg:mx-10 mx-5 md:p-5 lg:p-10 md:shadow-[#cccccc] md:shadow-xl bg-white rounded-md' style={{ marginTop: '50px' }}>
-      {/* <SEO
-        title={apiData?.fullname}
-        image={apiData?.image}
-        discription={apiData?.fullname}
-      /> */}
       <p className='text-left text-[18px] text-gray-500 text-medium'> {highlightWords(result.content, result.matches)}
         <Link
           onClick={() => navigate(`/text/${result?.id}`)}
@@ -125,7 +114,6 @@ function LemmaCard({ result }) {
   return (
     <div>
       <div className='flex flex-col gap-[10px] mx-10  p-10  shadow-[#cccccc] shadow-xl bg-white rounded-md' style={{ marginTop: '50px' }}>
-        {/* <h3 className='text-left text-[24px] font-bold'>"ipsLorem ipsum dolor, sit amet consectetur adipisicing elit. Praesentium?.um"</h3> */}
         <p className='text-left text-[18px] text-gray-500 text-medium'>
           {result.content.split(" ").map((word, idx) => (
             <span

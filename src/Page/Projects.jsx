@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { DataService } from '../config/Dataservice';
 import { endpoints } from '../config/endpoints';
-// import Seo from '../components/Seo';
 
 export default function Projects() {
   const [apiData, setApiData] = useState([]);
@@ -34,11 +33,6 @@ export default function Projects() {
 
   return (
     <div className='md:px-20 lg:px-20 my-10 px-10 '>
-      {/* <Seo
-        title="Nashirlar bo'limi"
-        image="./image.png"
-        discription="bu bo'limda siz nashirlarni ko'chirib olishingiz va o'zingiz qidirgan asarlarni topishingiz mumkin "
-      /> */}
       <h2 className='text-5xl font-bold mb-10 px-10'>Nashirlar</h2>
       <ResponsiveMasonry
         columnsCountBreakPoints={{ 350: 1, 750: 2, 1279: 3, 1439: 4 }}

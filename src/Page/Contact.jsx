@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { DataService } from "../config/Dataservice";
+import { DataService } from "../config/Dataservice"; ``
 import { endpoints } from "../config/endpoints";
-// import Seo from "../components/Seo";
 export default function Contact() {
   const [errors, setErrors] = useState({});
   const [formData, setFormData] = useState({ full_name: "", phone: "", message: "" });
@@ -47,11 +46,6 @@ export default function Contact() {
   }, []);
   return (
     <section className="py-10 sm:py-16 lg:py-24 mt-[100px]">
-      {/* <Seo
-        title={"Biz bilan bog'laning"}
-        image="./image.png"
-        discription={"Habar qoldiring va biz siz bilan aloqaga chiqamiz"}
-      /> */}
       <div className="px-4 mx-auto sm:px-6 lg:px-8 max-w-7xl">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-bold leading-tight text-base-content sm:text-4xl lg:text-5xl">

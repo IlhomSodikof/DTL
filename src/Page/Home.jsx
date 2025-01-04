@@ -3,13 +3,11 @@ import { Link } from "react-router-dom"
 import NewsHm from '../components/Home/NewsHm'
 import WebSites from '../components/WebSites'
 import Mansory from '../components/Home/Mansory'
-// import Seo from '../components/Seo'
 
 export default function Home() {
   return (
     <>
       <div className="lg:px-20 m-14 lg:mt-5">
-        {/* <Seo title="Gethugothemes" description="Gethugothemes" image="https://demo.gethugothemes.com/godocs/site/style-1/images/logo.png" url="https://demo.gethugothemes.com/godocs/site/style-1/" /> */}
         <div className="bg-white pb-6 sm:pb-8 lg:pb-12" >
           <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
 

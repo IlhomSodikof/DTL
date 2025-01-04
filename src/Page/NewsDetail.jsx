@@ -5,7 +5,6 @@ import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaTelegram } from 'react-icons/fa';
 import dateFormat from "dateformat";
-import Seo from '../components/Seo';
 
 
 
@@ -41,17 +40,6 @@ export default function NewsDetail() {
   return (
 
     <div className="w-full min-h-screen flex flex-col items-center justify-start p-6 sm:p-8 md:p-10">
-      <Seo
-        title={apiData?.title}
-        image={apiData?.image}
-        discription={apiData?.text}
-      />
-      {/* <SEO
-        title={"bu title  nomi content"}
-        description={apiData?.text?.substring(0, 150)}
-        image={apiData?.image}
-        url={window.location.href}
-      /> */}
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
