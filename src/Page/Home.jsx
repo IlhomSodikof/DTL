@@ -1,5 +1,4 @@
 import React from 'react'
-import Hero from '../components/Home/Hero'
 import { Link } from "react-router-dom"
 import NewsHm from '../components/Home/NewsHm'
 import WebSites from '../components/WebSites'
