@@ -4,7 +4,7 @@ import { DataService } from '../config/Dataservice';
 import { endpoints } from '../config/endpoints';
 import dateFormat from "dateformat";
 import { useNavigate } from 'react-router-dom';
-import SEO from '../components/Seo';
+import Seo from '../components/Seo';
 export default function News() {
   const navigate = useNavigate()
   const [apiData, setApiData] = useState([]);
@@ -28,7 +28,7 @@ export default function News() {
 
     <>
       <main>
-        <SEO
+        <Seo
           title="Yangiliklar"
           image="./image.png"
           discription="Yangiliklar bo'limida siz  til va ilmiy olam yangiliklaridan bo habar bo'lishingiz mumkin"

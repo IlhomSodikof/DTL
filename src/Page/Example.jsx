@@ -3,7 +3,7 @@ import { DataService } from '../config/Dataservice';
 import { endpoints } from '../config/endpoints';
 import { Link } from 'react-router-dom';
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import SEO from '../components/Seo';
+import Seo from '../components/Seo';
 
 
 export default function Example() {
@@ -53,7 +53,7 @@ export default function Example() {
 
   return (
     <div className='flex lg:flex-row flex-col gap-2 relative mt-10  px-5 md:px-10 lg:px-24'>
-      <SEO
+      <Seo
         title={apiData[0]?.name}
         image="./image.png"
         discription="Loyha haqida batafsil malumot oling..."

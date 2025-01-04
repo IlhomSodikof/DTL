@@ -7,7 +7,7 @@ import { PiChartDonutFill } from "react-icons/pi";
 import { useEffect, useState } from "react";
 import { endpoints } from '../config/endpoints';
 import { DataService } from '../config/Dataservice';
-import SEO from '../components/Seo';
+import Seo from '../components/Seo';
 
 
 
@@ -45,7 +45,7 @@ export default function StatisticPage() {
   const [num, setNum] = useState(2)
   return (
     <div className='my-20'>
-      <SEO
+      <Seo
         title="Statistika bo'limi"
         image="./image.png"
         discription="bu bo'limda qidirilgan so'zlar haqida malumot olasiz va ular qaysi hududlarga to'g'ri kelishini bilishingiz mumkin"

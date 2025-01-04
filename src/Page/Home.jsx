@@ -3,13 +3,13 @@ import { Link } from "react-router-dom"
 import NewsHm from '../components/Home/NewsHm'
 import WebSites from '../components/WebSites'
 import Mansory from '../components/Home/Mansory'
-import SEO from '../components/Seo'
+import Seo from '../components/Seo'
 
 export default function Home() {
   return (
     <>
       <div className="lg:px-20 m-14 lg:mt-5">
-        <SEO
+        <Seo
           title="Bosh sahifa"
           image="./image.png"
           discription="Bosh sahifaga o'tish"

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Masonry, { ResponsiveMasonry } from "react-responsive-masonry";
 import { DataService } from '../config/Dataservice';
 import { endpoints } from '../config/endpoints';
-import SEO from '../components/Seo';
+import Seo from '../components/Seo';
 
 export default function Projects() {
   const [apiData, setApiData] = useState([]);
@@ -34,7 +34,7 @@ export default function Projects() {
 
   return (
     <div className='md:px-20 lg:px-20 my-10 px-10 '>
-      <SEO
+      <Seo
         title="Nashirlar bo'limi"
         image="./image.png"
         discription="bu bo'limda siz nashirlarni ko'chirib olishingiz va o'zingiz qidirgan asarlarni topishingiz mumkin "

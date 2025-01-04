@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { IoSearchOutline } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom"
-import SEO from '../components/Seo';
 import Loader from '../components/Loader';
+import Seo from '../components/Seo';
 
 // import React, { useState } from 'react';
 // import { Link } from 'react-router-dom';
@@ -243,7 +243,7 @@ export default function Dictonary() {
   return (
     <>
       <div className="lg:px-24 flex flex-col lg:flex-row min-h-[80vh]  my-20">
-        <SEO title={"Qidruv bo'limi | DC"} description={"Qidruv bo'limi | DC"} image="../../public/Search.svg" />
+        <Seo title={"Qidruv bo'limi | DC"} description={"Qidruv bo'limi | DC"} image="../../public/Search.svg" />
         <ul className='flex flex-row pl-10 mb-5 lg:mb-0   lg:flex-col lg:w-56 xl:w-72  items-center h-full pt-10 border-r'>
           <li className='text-xl lg:text-3xl border-l-4 lg:border-l-0  font-medium cursor-pointer lg:w-[90%] py-0 lg:py-5 p-5 lg:border-b lg:text-center' onClick={() => { setTape("token"), clearData() }} style={{ borderColor: tape == "token" ? "crimson" : "", color: tape == "token" ? "crimson" : "" }}>Token</li>
           <li className='text-xl lg:text-3xl border-l-4 lg:border-l-0  font-medium cursor-pointer lg:w-[90%] py-0 lg:py-5 p-5 lg:border-b lg:text-center' onClick={() => { setTape("lemma"), clearData() }} style={{ borderColor: tape == "lemma" ? "crimson" : "", color: tape == "lemma" ? "crimson" : "" }}>Lema</li>

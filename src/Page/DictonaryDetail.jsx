@@ -42,7 +42,7 @@ import { useParams } from "react-router-dom";
 import { DataService } from "../config/Dataservice";
 import { endpoints } from "../config/endpoints";
 import { BiSolidQuoteAltRight, BiSolidQuoteAltLeft } from "react-icons/bi";
-import SEO from "../components/Seo";
+import Seo from "../components/Seo";
 
 export default function DictonaryDetail() {
   const route = useParams();
@@ -73,7 +73,7 @@ export default function DictonaryDetail() {
 
   return (
     <div className="p-5 sm:px-10 md:px-20 lg:px-24 lg:mt-20">
-      <SEO
+      <Seo
         title={apiData?.word_name}
         image="./image.png"
         discription="Qidrilgan so'z haqida to'liq malumot oling.."
