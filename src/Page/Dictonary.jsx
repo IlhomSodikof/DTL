@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { IoSearchOutline } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom"
 import Loader from '../components/Loader';
-import Seo from '../components/Seo';
+// import Seo from '../components/Seo';
 
 // import React, { useState } from 'react';
 // import { Link } from 'react-router-dom';
