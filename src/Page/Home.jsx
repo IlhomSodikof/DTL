@@ -14,9 +14,9 @@ export default function Home() {
 
             <section className="flex flex-col justify-between  gap-10 sm:gap-10 md:gap-16 lg:flex-row">
               <div className="flex flex-col items-center justify-center text-center lg:items-start lg:py-12 lg:text-left xl:w-8/12 xl:pt-24">
-                <h1 className="mb-8 text-4xl font-bold text-black sm:text-5xl md:mb-10 md:text-5xl">Documentation Theme By Gethugothemes</h1>
+                <h1 className="mb-8 text-4xl font-bold text-black sm:text-5xl md:mb-10 md:text-5xl">O'zbek Tili: So'zlar, Qoidalar, va Ularning Tushunchalari</h1>
 
-                <p className="mb-8 leading-relaxed text-gray-500 md:mb-12 lg:mb-10 lg:w-4/5  xl:text-lg">Lorem ipsum dolor amet, consetetur sadiffspscing elitr, diam nonumy invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua At.</p>
+                <p className="mb-8 leading-relaxed text-gray-500 md:mb-12 lg:mb-10 lg:w-4/5  xl:text-lg">O'zbek tilining boy tarixi, grammatika qoidalari va so'zlarning mohiyatini chuqurroq tushunib, uning o'ziga xos xususiyatlari bilan tanishing. Tilni yanada yaxshiroq bilish uchun bizning resurslardan foydalaning.</p>
 
                 <Link to="/example" className="inline-block rounded bg-[crimson] px-6 py-3 text-center text-sm font-semibold text-white outline-none  transition duration-100 hover:bg-[#ee3459] focus-visible:ring  md:text-base">Loyha haqida</Link>
 

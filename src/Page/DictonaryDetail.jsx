@@ -66,7 +66,7 @@ export default function DictonaryDetail() {
     const regex = new RegExp(`(${word})`, "gi"); // So'zni e'tiborli yoki e'tiborsiz harflar bilan topish
     return content.replace(
       regex,
-      `<span class="bg-yellow-300 font-bold">$1</span>` // Topilgan so'zni belgilash
+      `<span className="bg-yellow-300 font-bold">$1</span>` // Topilgan so'zni belgilash
     );
   };
 

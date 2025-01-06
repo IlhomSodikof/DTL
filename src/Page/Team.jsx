@@ -42,7 +42,7 @@ export default function Team() {
               columnsCountBreakPoints={{ 350: 1, 640: 2, 1023: 3, 1280: 4 }}
               className="lg:p-[10px] px-0"
             >
-              <Masonry gutter="50px" >
+              <Masonry gutter="50px" className='team'>
 
                 {
                   apiData?.results?.map((e) => {

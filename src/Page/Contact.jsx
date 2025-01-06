@@ -33,8 +33,6 @@ export default function Contact() {
     try {
       const response = await DataService.get(endpoints.contactData);
       setApiData(response);
-      console.log("BU TEAM", response);
-
     } catch (error) {
       console.error("Error fetching category data:", error);
     }

@@ -8,7 +8,27 @@ import { useEffect, useState } from "react";
 import { endpoints } from '../config/endpoints';
 import { DataService } from '../config/Dataservice';
 
-const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const COLORS = [
+  '#489fb5',
+  '#adc178',
+  '#582f0e',
+  '#ff0054',
+  '#fca311',
+  '#00a6fb',
+  '#006400',
+  '#2a9d8f',
+  "#023e8a",
+  '#000000',
+  '#c1121f',
+  '#495057',
+  "#ccff33"
+];
+
+console.log(COLORS); // Farqli ranglar ro'yxati
+
+
+console.log(COLORS); // Boyitilgan ranglar ro'yxati
+
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     return (
@@ -125,7 +145,16 @@ export default function StatisticPage() {
               <Tooltip content={<CustomTooltip />} />
 
 
-              <Bar dataKey="word_count" fill="#8884d8" barSize={50} />
+              {/* <Bar dataKey="word_count" fill="#8884d8" barSize={50} /> */}
+              <Bar
+                dataKey="word_count"
+                fillOpacity={1}
+                barSize={50}
+                shape={(props) => {
+                  const barColor = COLORS[props.index % COLORS.length]; // Rangni aniqlash
+                  return <rect {...props} fill={barColor} />;
+                }}
+              />
             </BarChart>
           </ResponsiveContainer>) : (
             <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-8 w-full max-w-6xl px-10">
@@ -156,9 +185,14 @@ export default function StatisticPage() {
 
         }
 
-        {/* Footer or Additional Information */}
+
 
       </div>
+      {/* <div className='flex flex-wrap  gap-5 px-32'>{COLORS.map((e, i) =>
+        <div className='h-28 w-96 flex items-center justify-center rounded-md text-white' style={{ backgroundColor: e }} >So'zlar soni: ${i}</div>
+
+      )}</div> */}
+
     </div>
   );
 }

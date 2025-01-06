@@ -59,7 +59,7 @@ const SearchResultCard = ({ result }) => {
 
   return (
     <div className='relative flex flex-col gap-[10px] lg:mx-10 mx-5 md:p-5 lg:p-10 md:shadow-[#cccccc] md:shadow-xl bg-white rounded-md' style={{ marginTop: '50px' }}>
-      <p className='text-left text-[18px] text-gray-500 text-medium'> {highlightWords(result.content, result.matches)}
+      <p className='text-left text-[18px] text-gray-500 text-medium'> {highlightWords(result?.content, result?.matches)}
         <Link
           onClick={() => navigate(`/text/${result?.id}`)}
           className="text-blue-500 hover:cursor-pointer hover:underline pl-2">ko'proq...</Link>
@@ -151,19 +151,6 @@ function LemmaCard({ result }) {
   )
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 export default function Dictonary() {
   const [data, setData] = useState([]);
   const [searchWord, setSearchWord] = useState("");
@@ -206,14 +193,14 @@ export default function Dictonary() {
           setData(result.results.search_results || []);
 
 
-          console.log("bu searchmish", result.error);
+
 
         } catch (error) {
           console.error("API data fetching error:", error);
         } finally {
           setLoading(false);
         }
-        console.log("bu lemmmmaammamamamammamaada ");
+
 
         break;
     }
