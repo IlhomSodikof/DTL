@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  ::-webkit-scrollbar {
+    width: 8px; /* Scroll bar kengligi */
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: crimson; /* Tutqich rangi */
+    border-radius: 4px; /* Yumaloqlik */
+  }
+  ::-webkit-scrollbar-track {
+    background-color: #eee7e7; /* Orqa fon rangi */
+    border-radius: 4px; /* Orqa fon rangi */
+  }
+}
 .news_card {
   font-weight: 700;
   /* color: crimson; */

@@ -293,7 +293,7 @@ export default function Dictonary() {
               {denger?.results?.text_count && codeSt == 200 ? <p className='text-gray-400 text-[17px] font-medium'><span className='text-gray-800 '>{denger?.results?.text_count}</span> ta hujjatda <span className='text-gray-800'>{denger?.results?.total_occurrences}</span> ta so'z uchradi</p> : ""}
             </div>
           </div>
-          {tape == "token" && <div className="flex flex-col h-[70vh] overflow-auto   pb-7">
+          {tape == "token" && <div className="flex flex-col h-[70vh] overflow-auto overflow-y-scroll   pb-7">
             {loading ? (
               <p className='flex h-full w-full items-center justify-center text-2xl'><Loader /></p>
             ) : data.length > 0 && codeSt == 200 ? (
@@ -318,7 +318,7 @@ export default function Dictonary() {
           }
 
 
-          {tape == "lemma" && <div className="flex flex-col h-[70vh] overflow-auto pb-7">
+          {tape == "lemma" && <div className="flex flex-col h-[70vh] overflow-auto overflow-y-scroll pb-7">
             {loading ? (
               <p className='flex h-full w-full items-center justify-center text-2xl'><Loader /></p>
             ) : data.length > 0 && codeSt == 200 ? (
