@@ -303,13 +303,13 @@ export default function Dictonary() {
             ) : (
               data?.count > 0 || data?.results?.length > 0 ? <div className='flex flex-col items-center'>
 
-                <img className='lg:mt-10 h-[40vh] w-full' src="../../public/NoData.svg " alt="Resursiv rasm" />
+                <img className='lg:mt-10 h-[40vh] w-full' src="../NoData.svg " alt="Resursiv rasm" />
                 <p className='text-gray-400 text-md lg:text-lg font-medium mt-5'>Qidruv natijasi topilmadi </p>
               </div> : <div className='flex flex-col items-center'>
                 <picture>
-                  <source srcSet="../../public/BigSearch.svg" media="(min-width: 1024px)" />
-                  <source srcSet="../../public/Search.svg" media="(max-width: 1024px)" />
-                  <img className='lg:mt-10 h-[40vh] w-full' src="../../public/Search.svg " alt="Resursiv rasm" />
+                  <source srcSet="../BigSearch.svg" media="(min-width: 1024px)" />
+                  <source srcSet="../Search.svg" media="(max-width: 1024px)" />
+                  <img className='lg:mt-10 h-[40vh] w-full' src="../Search.svg " alt="Resursiv rasm" />
                 </picture>
                 <p className='text-gray-400 text-md lg:text-lg font-medium mt-5'>Qidirmoqchi bo'lgan so'zingizni kiriting</p>
               </div>
@@ -329,9 +329,9 @@ export default function Dictonary() {
 
               <div className='flex flex-col items-center'>
                 <picture>
-                  <source srcSet="../../public/BigSearch.svg" media="(min-width: 1024px)" />
-                  <source srcSet="../../public/Search.svg" media="(max-width: 1024px)" />
-                  <img className='lg:mt-10 h-[40vh] w-full' src="../../public/Search.svg " alt="Resursiv rasm" />
+                  <source srcSet="../BigSearch.svg" media="(min-width: 1024px)" />
+                  <source srcSet="../Search.svg" media="(max-width: 1024px)" />
+                  <img className='lg:mt-10 h-[40vh] w-full' src="../Search.svg " alt="Resursiv rasm" />
                 </picture>
                 <p className='text-gray-400 text-md lg:text-lg font-medium mt-5'>Qidirmoqchi bo'lgan so'zingizni kiriting</p>
               </div>
