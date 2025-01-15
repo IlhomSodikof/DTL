@@ -21,6 +21,8 @@ export default function Example() {
 
   useEffect(() => {
     fetchData();
+    sessionStorage.clear();
+
   }, []);
   const [isOpen, setIsOpen] = useState(false);
 

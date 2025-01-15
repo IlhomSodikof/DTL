@@ -24,10 +24,6 @@ const COLORS = [
   "#ccff33"
 ];
 
-console.log(COLORS); // Farqli ranglar ro'yxati
-
-
-console.log(COLORS); // Boyitilgan ranglar ro'yxati
 
 const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
@@ -55,6 +51,7 @@ export default function StatisticPage() {
   };
   useEffect(() => {
     fetchData();
+    sessionStorage.clear();
 
 
   }, []);

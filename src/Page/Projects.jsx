@@ -10,7 +10,6 @@ export default function Projects() {
     try {
       const response = await DataService.get(endpoints.project);
       setApiData(response);
-      console.log("Loyha ma'lumotlari:", response);
     } catch (error) {
       console.error("Kategoriya ma'lumotlarini olishda xatolik:", error);
     }
@@ -18,6 +17,8 @@ export default function Projects() {
 
   useEffect(() => {
     fetchData();
+    sessionStorage.clear();
+
   }, []);
 
   const handleDownload = (fileUrl) => {

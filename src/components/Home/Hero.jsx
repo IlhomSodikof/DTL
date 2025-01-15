@@ -114,7 +114,7 @@ export default function Hero() {
 
           </div>
         ) : (
-          <p className='flex h-full w-full items-center justify-center text-2xl min-h-[50vh] lg:min-h-[50vh]'><Loader /></p>
+          <div className='flex h-full w-full items-center justify-center text-2xl min-h-[50vh] lg:min-h-[50vh]'><Loader /></div>
 
         )
         }

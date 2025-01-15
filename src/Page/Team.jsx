@@ -12,7 +12,6 @@ export default function Team() {
     try {
       const response = await DataService.get(endpoints.xodimlar);
       setApiData(response);
-      console.log("BU TEAM", response);
 
     } catch (error) {
       console.error("Error fetching category data:", error);
@@ -20,6 +19,7 @@ export default function Team() {
   };
   useEffect(() => {
     fetchData();
+    sessionStorage.clear();
 
 
   }, []);

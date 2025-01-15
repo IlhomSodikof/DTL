@@ -16,7 +16,6 @@ export default function NewsHm() {
     try {
       const response = await DataService.get(endpoints.yangiliklar_boshsahifa);
       setApiData(response);
-      console.log("BU news homdagiw", response);
 
     } catch (error) {
       console.error("Error fetching category data:", error);
@@ -78,13 +77,13 @@ export default function NewsHm() {
   };
 
   const NextArrow = ({ onClick }) => (
-    <div className="custom-arrow  right-[0px] lg:right-[-20px] z-2" onClick={onClick}>
+    <div className="custom-arrow !hidden md:!flex right-[0px] lg:right-[-20px] z-2" onClick={onClick}>
       <IoIosArrowForward />
     </div>
   );
 
   const PrevArrow = ({ onClick }) => (
-    <div className="custom-arrow  left-[0px] lg:left-[-20px] z-2" onClick={onClick}>
+    <div className="custom-arrow !hidden md:!flex left-[0px] lg:left-[-20px] z-2" onClick={onClick}>
       <IoIosArrowBack />
     </div>
   );

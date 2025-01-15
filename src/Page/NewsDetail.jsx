@@ -24,6 +24,7 @@ export default function NewsDetail() {
   };
   useEffect(() => {
     fetchData();
+    sessionStorage.clear();
 
 
   }, []);

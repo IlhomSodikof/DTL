@@ -1,20 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Link } from "react-router-dom"
 import NewsHm from '../components/Home/NewsHm'
 import WebSites from '../components/WebSites'
 import Mansory from '../components/Home/Mansory'
 
 export default function Home() {
+  useEffect(() => {
+    sessionStorage.clear();
+
+  }, [])
   return (
     <>
       <div className="lg:px-20 m-14 lg:mt-5">
         <div className="bg-white pb-6 sm:pb-8 lg:pb-12" >
-          <div className="mx-auto max-w-screen-2xl px-4 md:px-8">
+          <div className="mx-auto max-w-screen-2xl sm:px-4 md:px-8">
 
 
             <section className="flex flex-col justify-between  gap-10 sm:gap-10 md:gap-16 lg:flex-row">
               <div className="flex flex-col items-center justify-center text-center lg:items-start lg:py-12 lg:text-left xl:w-8/12 xl:pt-24">
-                <h1 className="mb-8 text-4xl font-bold text-black sm:text-5xl md:mb-10 md:text-5xl">O'zbek Tili: So'zlar, Qoidalar, va Ularning Tushunchalari</h1>
+                <h1 className="mb-8 text-2xl font-bold text-black sm:text-3xl md:mb-10 md:text-5xl lg:text-4xl xl:text-5xl">O'zbek Tili: So'zlar, Qoidalar, va Ularning Tushunchalari</h1>
 
                 <p className="mb-8 leading-relaxed text-gray-500 md:mb-12 lg:mb-10 lg:w-4/5  xl:text-lg">O'zbek tilining boy tarixi, grammatika qoidalari va so'zlarning mohiyatini chuqurroq tushunib, uning o'ziga xos xususiyatlari bilan tanishing. Tilni yanada yaxshiroq bilish uchun bizning resurslardan foydalaning.</p>
 
@@ -32,7 +36,7 @@ export default function Home() {
       </div>
       <NewsHm />
       <div className='lg:mx-10 lg:px-10  md:mb-9 flex flex-col my-10 md:gap-6 lg:my-20' >
-        <h2 className='text-3xl  md:text-5xl text-center lg:text-start font-bold pl-2'>Eng ko'p qidirilgan so'zlar</h2>
+        <h2 className='text-2xl sm:text-3xl md:text-5xl lg:text-4xl xl:text-5xl text-center lg:text-start font-bold pl-2'>Eng ko'p qidirilgan so'zlar</h2>
         <Mansory /></div>
 
       {/* <Hero /> */}

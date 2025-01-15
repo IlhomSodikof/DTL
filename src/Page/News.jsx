@@ -567,6 +567,8 @@ export default function News() {
   // UseEffect - sahifa ochilganda ma'lumotlarni olish
   useEffect(() => {
     fetchData(currentPage);
+    sessionStorage.clear();
+
   }, [currentPage]);
 
   // Sahifalash
@@ -670,7 +672,7 @@ export default function News() {
 
         </div>
       ) : (
-        <p className='flex h-full w-full items-center justify-center text-2xl min-h-[39vh]: lg:min-h-[50vh]'><Loader /></p>
+        <div className='flex h-full w-full items-center justify-center text-2xl min-h-[39vh]: lg:min-h-[50vh]'><Loader /></div>
       )}
       {/* Paginatsiya tugmalari */}
       <div className="pagination my-10 lg:my-20 flex justify-center h-10">

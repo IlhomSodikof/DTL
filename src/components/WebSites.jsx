@@ -9,7 +9,6 @@ export default function WebSites() {
     try {
       const response = await DataService.get(endpoints.oxirtgifoydalisaytlar);
       setApiData(response);
-      console.log("BU foydali sattrtrtrtrtr", response);
 
     } catch (error) {
       console.error("Error fetching category data:", error);
@@ -32,8 +31,8 @@ export default function WebSites() {
 
             {apiData?.latest_useful_links?.map((e) => (
 
-              <a className='flex gap-2 items-center  mx-auto' href={e?.link} target='_blank'>
-                <img className="object-cover  w-12 h-12 rounded-md " src={e?.image} alt="surat bor " key={e?.id} /> <h3 className='text-xl text-gray-600 font-bold'>{e?.title}  </h3>
+              <a className='flex gap-2 items-center  mx-auto' href={e?.link} key={e?.id} target='_blank'>
+                <img className="object-cover  w-12 h-12 rounded-md " src={e?.image} alt="surat bor " /> <h3 className='text-xl text-gray-600 font-bold'>{e?.title}  </h3>
               </a>))}
             {/* <img className="object-contain w-auto mx-auto h-9" src="https://cdn.rareblocks.xyz/collection/clarity/images/brands/1/logo-martino.svg" alt="" /> */}
             {/* <img className="object-contain w-auto mx-auto h-9" src="https://cdn.rareblocks.xyz/collection/clarity/images/brands/1/logo-squarestone.svg" alt="" /> */}
