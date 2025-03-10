@@ -42,7 +42,7 @@ export default function Navbar() {
 
   return (
     <div className="flex justify-between sm:w-[540px] px-4 md:w-full mx-auto md:px-32 lg:px-24 xl:px-28 lg:h-[80px] h-[70px] items-center">
-      <Link to="/" className="text-4xl text-[crimson] font-bold">DC</Link>
+      <Link to="/" className="text-4xl text-[crimson] font-bold">DK</Link>
       <div className="hidden lg:flex gap-6 items-center">
         <Link className="font-medium" to="/">Bosh sahifa</Link>
         <div className="relative">
@@ -82,7 +82,7 @@ export default function Navbar() {
             </div>
           )}
         </div>
-        <Link className="font-medium" to="/statistic">Statistic tahlil</Link>
+        <Link className="font-medium" to="/statistic">Statistik tahlil</Link>
         <Link className="font-medium" to="/dictonary">Lug'at</Link>
         <Link className="font-medium" to="/news">Yangiliklar</Link>
       </div>
@@ -128,7 +128,7 @@ export default function Navbar() {
               <Link to="/websites" onClick={() => setIsNavOpen(false)}>Foydali havolalar</Link>
             </li>
             <li className="border-b border-gray-400 my-8 uppercase">
-              <Link to="/statistic" onClick={() => setIsNavOpen(false)}>Statistic tahlil</Link>
+              <Link to="/statistic" onClick={() => setIsNavOpen(false)}>Statistik tahlil</Link>
             </li>
             <li className="border-b border-gray-400 my-8 uppercase">
               <Link to="/dictonary" onClick={() => setIsNavOpen(false)}>Lug'at</Link>

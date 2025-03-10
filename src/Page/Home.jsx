@@ -18,7 +18,7 @@ export default function Home() {
 
             <section className="flex flex-col justify-between  gap-10 sm:gap-10 md:gap-16 lg:flex-row">
               <div className="flex flex-col items-center justify-center text-center lg:items-start lg:py-12 lg:text-left xl:w-8/12 xl:pt-24">
-                <h1 className="mb-8 text-2xl font-bold text-black sm:text-3xl md:mb-10 md:text-5xl lg:text-4xl xl:text-5xl">O'zbek Tili: So'zlar, Qoidalar, va Ularning Tushunchalari</h1>
+                <h1 className="mb-8 text-2xl font-bold text-black sm:text-3xl md:mb-10 md:text-5xl lg:text-4xl xl:text-5xl">O'zbek Tili: so'zlar, qoidalar, va ularning tushunchalari</h1>
 
                 <p className="mb-8 leading-relaxed text-gray-500 md:mb-12 lg:mb-10 lg:w-4/5  xl:text-lg">O'zbek tilining boy tarixi, grammatika qoidalari va so'zlarning mohiyatini chuqurroq tushunib, uning o'ziga xos xususiyatlari bilan tanishing. Tilni yanada yaxshiroq bilish uchun bizning resurslardan foydalaning.</p>
 

@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="text-center xl:flex xl:items-center xl:justify-between xl:text-left">
           <div className="xl:flex xl:items-center xl:justify-start bg-white">
             {/* <img className="w-auto mx-auto h-7" src="https://demo.gethugothemes.com/godocs/site/style-1/images/logo_hueaa96c5fb38bccdc9ca82bc91d45cf27_3832_310x0_resize_q90_h2_box_3.webp" alt="" /> */}
-            <Link to="/" className=" text-4xl text-[crimson] font-bold">Ditelektal Corpus</Link>
+            <Link to="/" className=" text-4xl text-[crimson] font-bold">Ditelektal Korpus</Link>
           </div>
 
           <div className="items-center mt-8 xl:mt-0 xl:flex xl:justify-end xl:space-x-8">
